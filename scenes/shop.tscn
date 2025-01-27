@@ -1,0 +1,130 @@
+[gd_scene load_steps=13 format=3 uid="uid://v81mqcapod0o"]
+
+[ext_resource type="Texture2D" uid="uid://r70101vd2j0s" path="res://assets/frog.png" id="1_wimty"]
+[ext_resource type="Texture2D" uid="uid://bngjtxhp55fft" path="res://assets/Little Mage1-1/_Staffs/staff_mighty.png" id="2_aw70q"]
+[ext_resource type="Texture2D" uid="uid://wcb5ea3qj1kh" path="res://assets/Little Mage1-1/_Staffs/staff_crystal.png" id="3_s0vmu"]
+[ext_resource type="Texture2D" uid="uid://cu6bud3de606s" path="res://assets/shield of fire-idle.png" id="4_edkbn"]
+[ext_resource type="FontFile" uid="uid://djw6p78gsyxsv" path="res://assets/fonts/dogica.ttf" id="5_bv2s7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_taen8"]
+size = Vector2(15, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iakh1"]
+size = Vector2(34, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_se5o0"]
+size = Vector2(35, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7666n"]
+size = Vector2(34, 34)
+
+[sub_resource type="Animation" id="Animation_4t7jl"]
+resource_name = "fade_in_out"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_atbin"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g6qae"]
+_data = {
+"RESET": SubResource("Animation_atbin"),
+"fade_in_out": SubResource("Animation_4t7jl")
+}
+
+[node name="Shop" type="Node2D"]
+
+[node name="Frog" type="StaticBody2D" parent="."]
+
+[node name="Frog_Sprite2D" type="Sprite2D" parent="Frog"]
+position = Vector2(0, -32)
+texture = ExtResource("1_wimty")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Frog"]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_taen8")
+
+[node name="Crystal Wand" type="Area2D" parent="."]
+
+[node name="Crystal_Sprite2D" type="Sprite2D" parent="Crystal Wand"]
+position = Vector2(39, -5)
+scale = Vector2(0.875, 0.875)
+texture = ExtResource("2_aw70q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crystal Wand"]
+position = Vector2(0, 23)
+shape = SubResource("RectangleShape2D_iakh1")
+
+[node name="Mighty_Wand" type="Area2D" parent="."]
+
+[node name="Mighty_Sprite2D" type="Sprite2D" parent="Mighty_Wand"]
+position = Vector2(0, 22)
+scale = Vector2(0.875, 0.875)
+texture = ExtResource("3_s0vmu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mighty_Wand"]
+position = Vector2(39.5, -4)
+shape = SubResource("RectangleShape2D_se5o0")
+
+[node name="Shield" type="Area2D" parent="."]
+
+[node name="Shield_Sprite2D" type="Sprite2D" parent="Shield"]
+position = Vector2(-38, -3)
+scale = Vector2(0.453125, 0.453125)
+texture = ExtResource("4_edkbn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shield"]
+position = Vector2(-38, -3)
+shape = SubResource("RectangleShape2D_7666n")
+
+[node name="Label(Press E)" type="Label" parent="."]
+visible = false
+offset_left = -19.0
+offset_top = 72.0
+offset_right = 93.0
+offset_bottom = 86.0
+scale = Vector2(0.35, 0.35)
+theme_override_colors/font_color = Color(1, 0.990833, 0.45, 1)
+theme_override_fonts/font = ExtResource("5_bv2s7")
+text = "Press E"
+justification_flags = 171
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Label(Press E)")
+libraries = {
+"": SubResource("AnimationLibrary_g6qae")
+}
+
+[node name="Popup" type="CanvasLayer" parent="."]
+layer = 10
+scale = Vector2(24, 13.5)
+transform = Transform2D(24, 0, 0, 13.5, 0, 0)
+
+[node name="ColorRect" type="ColorRect" parent="Popup"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 0.478431)

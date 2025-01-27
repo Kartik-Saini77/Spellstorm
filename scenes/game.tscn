@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://u32k0y4fvv83"]
+[gd_scene load_steps=14 format=4 uid="uid://u32k0y4fvv83"]
 
 [ext_resource type="PackedScene" uid="uid://b8kb1jk35rbdj" path="res://scenes/player.tscn" id="1_oexw6"]
 [ext_resource type="Texture2D" uid="uid://dal7u05r0g4c7" path="res://assets/Little Mage1-1/Tileset/TX Tileset Grass.png" id="2_ptofe"]
@@ -6,10 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://deej4rhqer60p" path="res://assets/Little Mage1-1/Tileset/TX Shadow Plant.png" id="4_k2xit"]
 [ext_resource type="Texture2D" uid="uid://cvxfs3m5hjnhy" path="res://assets/Little Mage1-1/Tileset/TX Props.png" id="5_dd7p6"]
 [ext_resource type="Texture2D" uid="uid://c52v5hie0uggt" path="res://assets/Little Mage1-1/Tileset/TX Shadow_Props.png" id="6_m7w7w"]
-[ext_resource type="Script" path="res://scripts/opacity_toggle.gd" id="7_dchtu"]
-[ext_resource type="PackedScene" uid="uid://b1qfeiw1npae" path="res://scenes/shield_of_fire.tscn" id="9_v8iua"]
-[ext_resource type="PackedScene" uid="uid://pkfy7vddgpyx" path="res://scenes/fireball_drop.tscn" id="10_qiwwh"]
-[ext_resource type="PackedScene" uid="uid://dx0i2ao4n308j" path="res://scenes/coin.tscn" id="11_b0g4t"]
+[ext_resource type="PackedScene" uid="uid://v81mqcapod0o" path="res://scenes/shop.tscn" id="11_ohako"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_weork"]
 texture = ExtResource("2_ptofe")
@@ -1374,7 +1371,7 @@ tile_set = SubResource("TileSet_4cg7y")
 
 [node name="Bushes" type="TileMapLayer" parent="TileMaps"]
 use_parent_material = true
-tile_map_data = PackedByteArray("AAD9//7/AwAWABEAAAD9////AwAWABIAAAD9/wAAAwAWABMAAAD9/wEAAwAWABQAAAD+//7/AwAXABEAAAD+////AwAXABIAAAD+/wAAAwAXABMAAAD+/wEAAwAXABQAAAD+/wIAAwAXABUAAAD///3/AwAYABAAAAD///7/AwAYABEAAAD/////AwAYABIAAAD//wAAAwAYABMAAAD//wEAAwAYABQAAAD//wIAAwAYABUAAAAAAP3/AwAZABAAAAAAAP7/AwAZABEAAAAAAP//AwAZABIAAAAAAAAAAwAZABMAAAAAAAEAAwAZABQAAAAAAAIAAwAZABUAAAABAP7/AwAaABEAAAABAP//AwAaABIAAAABAAAAAwAaABMAAAABAAEAAwAaABQAAAABAAIAAwAaABUAAAACAP7/AwAbABEAAAACAP//AwAbABIAAAACAAAAAwAbABMAAAACAAEAAwAbABQAAAA=")
+tile_map_data = PackedByteArray("AAD9//7/AwAWABEAAAD9////AwAWABIAAAD9/wAAAwAWABMAAAD9/wEAAwAWABQAAAD+//7/AwAXABEAAAD+////AwAXABIAAAD+/wAAAwAXABMAAAD+/wEAAwAXABQAAAD+/wIAAwAXABUAAAD///3/AwAYABAAAAD/////AwAYABIAAAD//wAAAwAYABMAAAD//wEAAwAYABQAAAD//wIAAwAYABUAAAAAAP3/AwAZABAAAAAAAP7/AwAZABEAAAAAAP//AwAZABIAAAAAAAAAAwAZABMAAAAAAAEAAwAZABQAAAAAAAIAAwAZABUAAAABAP7/AwAaABEAAAABAP//AwAaABIAAAABAAAAAwAaABMAAAABAAEAAwAaABQAAAABAAIAAwAaABUAAAACAP7/AwAbABEAAAACAP//AwAbABIAAAACAAAAAwAbABMAAAACAAEAAwAbABQAAAD///7/AwAYABEAAAA=")
 tile_set = SubResource("TileSet_4cg7y")
 
 [node name="Tree2_S" type="TileMapLayer" parent="TileMaps"]
@@ -1389,31 +1386,10 @@ tile_set = SubResource("TileSet_4cg7y")
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD/////AwAUABAAAAD//wAAAwAUABEAAAAAAP//AwAVABAAAAAAAAAAAwAVABEAAAA=")
 tile_set = SubResource("TileSet_4cg7y")
-script = ExtResource("7_dchtu")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_oexw6")]
-z_index = 5
+[node name="Shop" parent="." instance=ExtResource("11_ohako")]
+
+[node name="Player" parent="." instance=ExtResource("1_oexw6")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
-
-[node name="Shield_Of_Fire" parent="." instance=ExtResource("9_v8iua")]
-position = Vector2(-105, -1)
-
-[node name="Fireball" parent="." instance=ExtResource("10_qiwwh")]
-position = Vector2(-102, 63)
-
-[node name="Fireball2" parent="." instance=ExtResource("10_qiwwh")]
-position = Vector2(-13, 73)
-
-[node name="Coin" parent="." instance=ExtResource("11_b0g4t")]
-position = Vector2(-102, -65)
-
-[node name="Coin2" parent="." instance=ExtResource("11_b0g4t")]
-position = Vector2(63, -45)
-
-[node name="Coin3" parent="." instance=ExtResource("11_b0g4t")]
-position = Vector2(62, 63)
-
-[node name="Shield_Of_Fire2" parent="." instance=ExtResource("9_v8iua")]
-position = Vector2(117, 34)

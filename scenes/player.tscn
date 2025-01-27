@@ -331,7 +331,7 @@ animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(0, -5)
+position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_melbh")
 
 [node name="Attack_Cooldown" type="Timer" parent="."]

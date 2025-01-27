@@ -10,7 +10,7 @@ extends CharacterBody2D
 var fireball_cooldown: float = 0.8
 var death_animation_duration: float = 4.0
 
-var equipped_wand: String = "wood"
+var equipped_wand: String = "crystal"
 var equipped_shield: Node2D = null
 var spell: String = "shield_of_fire"
 # Inventory
@@ -108,7 +108,7 @@ func try_launch_fireball(fire_direction: Vector2):
 		#if equipped_shield:
 			#equipped_shield.reduce_durability()
 		#else:
-			#health -= 10
+			#health -= 25
 
 func add_to_inventory(item: String):
 	if item == "coin":
