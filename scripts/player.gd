@@ -10,12 +10,12 @@ extends CharacterBody2D
 var fireball_cooldown: float = 0.8
 var death_animation_duration: float = 4.0
 
-var equipped_wand: String = "crystal"
+var equipped_wand: String = "Mighty"
 var equipped_shield: Node2D = null
 var spell: String = "shield_of_fire"
 # Inventory
 var inventory = {
-	"coins": 0,
+	"coins": 25,
 	"shield": 0,
 	"fireball": false,
 }
@@ -24,6 +24,11 @@ func _ready():
 	pass
 
 func _physics_process(_delta: float) -> void:
+	if $"../Shop".popup.visible:
+		velocity = Vector2.ZERO
+		play_animation("idle")
+		return
+
 	var direction = Vector2.ZERO
 	var fire_direction = Vector2(
 		Input.get_axis("fire_left", "fire_right"),
@@ -53,7 +58,7 @@ func play_animation(animation_name: String):
 		sprite.play(animation_name)
 
 	match animation_name:
-		"attack_wood", "attack_crystal", "attack_mighty":
+		"attack Wood", "attack Crystal", "attack Mighty":
 			sprite.offset = Vector2(0, -8)  # Adjust to center 32x32 animations
 			if inventory["fireball"]:
 				sprite.speed_scale = 1.0
@@ -79,7 +84,7 @@ func handle_wrap_around(entity: Node2D) -> void:
 func attack(fire_direction: Vector2):
 	if $Attack_Cooldown.is_stopped():
 		sprite.flip_h = fire_direction.x < 0
-		play_animation("attack_" + equipped_wand)
+		play_animation("attack " + equipped_wand)
 
 		var delay_timer = Timer.new()
 		delay_timer.one_shot = true

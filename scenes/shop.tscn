@@ -1,39 +1,25 @@
-[gd_scene load_steps=13 format=3 uid="uid://v81mqcapod0o"]
+[gd_scene load_steps=20 format=3 uid="uid://v81mqcapod0o"]
 
+[ext_resource type="Script" path="res://scripts/shop.gd" id="1_bhjno"]
 [ext_resource type="Texture2D" uid="uid://r70101vd2j0s" path="res://assets/frog.png" id="1_wimty"]
 [ext_resource type="Texture2D" uid="uid://bngjtxhp55fft" path="res://assets/Little Mage1-1/_Staffs/staff_mighty.png" id="2_aw70q"]
 [ext_resource type="Texture2D" uid="uid://wcb5ea3qj1kh" path="res://assets/Little Mage1-1/_Staffs/staff_crystal.png" id="3_s0vmu"]
 [ext_resource type="Texture2D" uid="uid://cu6bud3de606s" path="res://assets/shield of fire-idle.png" id="4_edkbn"]
 [ext_resource type="FontFile" uid="uid://djw6p78gsyxsv" path="res://assets/fonts/dogica.ttf" id="5_bv2s7"]
+[ext_resource type="StyleBox" uid="uid://evodhvk0ao7p" path="res://assets/fonts/button_background.tres" id="6_i6uld"]
+[ext_resource type="Texture2D" uid="uid://bnkgyhxcrysf0" path="res://assets/coin(32x32).png" id="8_1t8by"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_taen8"]
 size = Vector2(15, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iakh1"]
-size = Vector2(34, 32)
+size = Vector2(28, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_se5o0"]
-size = Vector2(35, 34)
+size = Vector2(33, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7666n"]
-size = Vector2(34, 34)
-
-[sub_resource type="Animation" id="Animation_4t7jl"]
-resource_name = "fade_in_out"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
-}
+size = Vector2(33, 34)
 
 [sub_resource type="Animation" id="Animation_atbin"]
 length = 0.001
@@ -50,13 +36,76 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_4t7jl"]
+resource_name = "fade_in_out"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g6qae"]
 _data = {
 "RESET": SubResource("Animation_atbin"),
 "fade_in_out": SubResource("Animation_4t7jl")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hv01"]
+bg_color = Color(0.4452, 0.53, 0.514453, 1)
+border_width_bottom = 4
+border_color = Color(0.207, 0.227317, 0.23, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 4
+shadow_size = 3
+shadow_offset = Vector2(0, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yp0xs"]
+bg_color = Color(0.445149, 0.694783, 0.647641, 1)
+border_width_bottom = 4
+border_color = Color(2.06962e-06, 0.448336, 0.510534, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 4
+shadow_size = 3
+shadow_offset = Vector2(0, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8dwxg"]
+bg_color = Color(0.369226, 0.606057, 0.562139, 1)
+border_width_bottom = 4
+border_color = Color(0, 0.389509, 0.444439, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 4
+shadow_size = 3
+shadow_offset = Vector2(0, 1)
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_nwwls"]
+Button/styles/disabled = SubResource("StyleBoxFlat_7hv01")
+Button/styles/hover = SubResource("StyleBoxFlat_yp0xs")
+Button/styles/normal = ExtResource("6_i6uld")
+Button/styles/pressed = SubResource("StyleBoxFlat_8dwxg")
+
 [node name="Shop" type="Node2D"]
+script = ExtResource("1_bhjno")
 
 [node name="Frog" type="StaticBody2D" parent="."]
 
@@ -76,33 +125,32 @@ scale = Vector2(0.875, 0.875)
 texture = ExtResource("2_aw70q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Crystal Wand"]
-position = Vector2(0, 23)
+position = Vector2(0, 25)
 shape = SubResource("RectangleShape2D_iakh1")
 
-[node name="Mighty_Wand" type="Area2D" parent="."]
+[node name="Mighty Wand" type="Area2D" parent="."]
 
-[node name="Mighty_Sprite2D" type="Sprite2D" parent="Mighty_Wand"]
+[node name="Mighty_Sprite2D" type="Sprite2D" parent="Mighty Wand"]
 position = Vector2(0, 22)
 scale = Vector2(0.875, 0.875)
 texture = ExtResource("3_s0vmu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mighty_Wand"]
-position = Vector2(39.5, -4)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mighty Wand"]
+position = Vector2(42.5, -4)
 shape = SubResource("RectangleShape2D_se5o0")
 
-[node name="Shield" type="Area2D" parent="."]
+[node name="Shield Of Fire" type="Area2D" parent="."]
 
-[node name="Shield_Sprite2D" type="Sprite2D" parent="Shield"]
+[node name="Shield_Sprite2D" type="Sprite2D" parent="Shield Of Fire"]
 position = Vector2(-38, -3)
 scale = Vector2(0.453125, 0.453125)
 texture = ExtResource("4_edkbn")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Shield"]
-position = Vector2(-38, -3)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shield Of Fire"]
+position = Vector2(-42.5, -3)
 shape = SubResource("RectangleShape2D_7666n")
 
 [node name="Label(Press E)" type="Label" parent="."]
-visible = false
 offset_left = -19.0
 offset_top = 72.0
 offset_right = 93.0
@@ -121,10 +169,67 @@ libraries = {
 
 [node name="Popup" type="CanvasLayer" parent="."]
 layer = 10
-scale = Vector2(24, 13.5)
-transform = Transform2D(24, 0, 0, 13.5, 0, 0)
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="Popup"]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 0.478431)
+
+[node name="Sprite2D" type="Sprite2D" parent="Popup"]
+position = Vector2(480, 270)
+scale = Vector2(5.25001, 5.25001)
+texture = ExtResource("2_aw70q")
+
+[node name="Description" type="Label" parent="Popup"]
+offset_left = 321.0
+offset_top = 318.0
+offset_right = 635.0
+offset_bottom = 424.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 5
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_fonts/font = ExtResource("5_bv2s7")
+theme_override_font_sizes/font_size = 16
+text = "Crystal Wand
+
++10 Damage
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Control" type="Control" parent="Popup"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 407.0
+offset_top = 424.0
+offset_right = 555.0
+offset_bottom = 461.0
+theme = SubResource("Theme_nwwls")
+
+[node name="Button" type="Button" parent="Popup/Control"]
+layout_mode = 0
+offset_right = 148.0
+offset_bottom = 36.0
+focus_mode = 0
+theme_override_colors/font_disabled_color = Color(0.903598, 0.903598, 0.903598, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_disabled_color = Color(0.899258, 0.899258, 0.899258, 1)
+theme_override_fonts/font = ExtResource("5_bv2s7")
+text = "20 Buy "
+icon = ExtResource("8_1t8by")
+
+[connection signal="body_entered" from="Crystal Wand" to="." method="_on_crystal_area_entered"]
+[connection signal="body_exited" from="Crystal Wand" to="." method="_on_item_area_exited"]
+[connection signal="body_entered" from="Mighty Wand" to="." method="_on_mighty_area_entered"]
+[connection signal="body_exited" from="Mighty Wand" to="." method="_on_item_area_exited"]
+[connection signal="body_entered" from="Shield Of Fire" to="." method="_on_shield_area_entered"]
+[connection signal="body_exited" from="Shield Of Fire" to="." method="_on_item_area_exited"]
+[connection signal="pressed" from="Popup/Control/Button" to="." method="_on_purchase_pressed"]

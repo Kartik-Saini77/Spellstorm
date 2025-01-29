@@ -23,6 +23,7 @@ window/size/viewport_height=540
 [global_group]
 
 Player="refers to the player sprite"
+shop_items=""
 
 [input]
 

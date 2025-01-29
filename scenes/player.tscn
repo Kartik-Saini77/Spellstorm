@@ -163,7 +163,7 @@ animations = [{
 "texture": ExtResource("7_crsa3")
 }],
 "loop": true,
-"name": &"attack_crystal",
+"name": &"attack Crystal",
 "speed": 10.0
 }, {
 "frames": [{
@@ -186,7 +186,7 @@ animations = [{
 "texture": ExtResource("13_q65h1")
 }],
 "loop": true,
-"name": &"attack_mighty",
+"name": &"attack Mighty",
 "speed": 10.0
 }, {
 "frames": [{
@@ -209,7 +209,7 @@ animations = [{
 "texture": ExtResource("19_uh8rw")
 }],
 "loop": true,
-"name": &"attack_wood",
+"name": &"attack Wood",
 "speed": 10.0
 }, {
 "frames": [{
@@ -330,8 +330,7 @@ sprite_frames = SubResource("SpriteFrames_hw2ru")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, -4)
+position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_melbh")
 
 [node name="Attack_Cooldown" type="Timer" parent="."]
