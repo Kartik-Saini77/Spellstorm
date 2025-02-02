@@ -17,12 +17,14 @@ func _on_body_entered(body: Node2D) -> void:
 	if body == player:
 		if player.equipped_shield:
 			player.equipped_shield.queue_free()
+			print("freed")
 		
 		$Area2D/CollisionShape2D.shape.radius = 24.0
 		state = ShieldState.EQUIPPED
 		player.equipped_shield = self
 		player.add_to_inventory("shield")
 		update_animation()
+		print("added")
 
 func reduce_durability():
 	if player.inventory["shield"]:

@@ -6,22 +6,18 @@ extends CharacterBody2D
 @onready var sprite: AnimatedSprite2D = $"./Sprite"
 @onready var screen_size: Vector2 = get_viewport_rect().size
 @onready var fireball_scene = preload("res://scenes/fireball.tscn")
+@onready var slow_timer: Timer = $Slow_Timer
 
 var fireball_cooldown: float = 0.8
 var death_animation_duration: float = 4.0
-
-var equipped_wand: String = "Mighty"
+var equipped_wand: String = "Wood"
 var equipped_shield: Node2D = null
-var spell: String = "shield_of_fire"
-# Inventory
+
 var inventory = {
-	"coins": 25,
+	"coins": 50,
 	"shield": 0,
 	"fireball": false,
 }
-
-func _ready():
-	pass
 
 func _physics_process(_delta: float) -> void:
 	if $"../Shop".popup.visible:
@@ -53,7 +49,7 @@ func _physics_process(_delta: float) -> void:
 
 	handle_wrap_around(self)
 
-func play_animation(animation_name: String):
+func play_animation(animation_name: String) -> void:
 	if sprite.animation != animation_name:
 		sprite.play(animation_name)
 
@@ -61,7 +57,7 @@ func play_animation(animation_name: String):
 		"attack Wood", "attack Crystal", "attack Mighty":
 			sprite.offset = Vector2(0, -8)  # Adjust to center 32x32 animations
 			if inventory["fireball"]:
-				sprite.speed_scale = 1.0
+				sprite.speed_scale = 1.4
 		_:
 			sprite.offset = Vector2.ZERO
 			sprite.speed_scale = 1.0
@@ -81,7 +77,7 @@ func handle_wrap_around(entity: Node2D) -> void:
 	elif entity.position.y < -adjusted_screen_size.y / 2:
 		entity.position.y = adjusted_screen_size.y / 2
 
-func attack(fire_direction: Vector2):
+func attack(fire_direction: Vector2) -> void:
 	if $Attack_Cooldown.is_stopped():
 		sprite.flip_h = fire_direction.x < 0
 		play_animation("attack " + equipped_wand)
@@ -95,7 +91,7 @@ func attack(fire_direction: Vector2):
 
 		$Attack_Cooldown.start(fireball_cooldown)
 
-func try_launch_fireball(fire_direction: Vector2):
+func try_launch_fireball(fire_direction: Vector2) -> void:
 	fire_direction = Vector2(
 		Input.get_axis("fire_left", "fire_right"),
 		Input.get_axis("fire_up", "fire_down")
@@ -104,18 +100,34 @@ func try_launch_fireball(fire_direction: Vector2):
 	if fire_direction != Vector2.ZERO:
 		var fireball = fireball_scene.instantiate()
 		if sprite.flip_h:
-			fireball.position = position + Vector2(-9, -5)
+			fireball.position = position + Vector2(-9, -5)  # + Vector2(100, -100)
 		else:
 			fireball.position = position + Vector2(9, -5)
 
-		fireball.set_direction(fire_direction)
+		
 		get_parent().add_child(fireball)
-		#if equipped_shield:
-			#equipped_shield.reduce_durability()
-		#else:
-			#health -= 25
+		fireball.set_direction(fire_direction)
 
-func add_to_inventory(item: String):
+func damage(amount: int) -> bool:
+	if equipped_shield:
+		equipped_shield.reduce_durability()
+		return false
+	else:
+		health -= amount
+		$AnimationPlayer.play("damage")
+		return true
+
+func apply_slow(duration: float = 3.0) -> void:
+	speed = 100.0 * 0.5     #normal_speed * slow_multiplier
+	if not slow_timer.is_stopped():
+		slow_timer.stop()
+	slow_timer.wait_time = duration
+	slow_timer.start()
+
+func _on_slow_timer_timeout() -> void:
+	speed = 100.0
+
+func add_to_inventory(item: String) -> void:
 	if item == "coin":
 		inventory["coins"] += 1
 		update_coin_ui()
@@ -125,7 +137,7 @@ func add_to_inventory(item: String):
 		inventory[item] = true
 	print(inventory)
 
-func update_coin_ui():							#To-do
+func update_coin_ui():                          #To-do
 	pass
 
 func spawn_drops():

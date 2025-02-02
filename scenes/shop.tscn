@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://v81mqcapod0o"]
+[gd_scene load_steps=24 format=3 uid="uid://v81mqcapod0o"]
 
 [ext_resource type="Script" path="res://scripts/shop.gd" id="1_bhjno"]
 [ext_resource type="Texture2D" uid="uid://r70101vd2j0s" path="res://assets/frog.png" id="1_wimty"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://wcb5ea3qj1kh" path="res://assets/Little Mage1-1/_Staffs/staff_crystal.png" id="3_s0vmu"]
 [ext_resource type="Texture2D" uid="uid://cu6bud3de606s" path="res://assets/shield of fire-idle.png" id="4_edkbn"]
 [ext_resource type="FontFile" uid="uid://djw6p78gsyxsv" path="res://assets/fonts/dogica.ttf" id="5_bv2s7"]
-[ext_resource type="StyleBox" uid="uid://evodhvk0ao7p" path="res://assets/fonts/button_background.tres" id="6_i6uld"]
+[ext_resource type="Texture2D" uid="uid://c1mn8qauus7j5" path="res://assets/next_wave.png" id="7_62swk"]
 [ext_resource type="Texture2D" uid="uid://bnkgyhxcrysf0" path="res://assets/coin(32x32).png" id="8_1t8by"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_taen8"]
@@ -21,21 +21,6 @@ size = Vector2(33, 34)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7666n"]
 size = Vector2(33, 34)
 
-[sub_resource type="Animation" id="Animation_atbin"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_4t7jl"]
 resource_name = "fade_in_out"
 length = 2.0
@@ -47,7 +32,7 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1.5, 2),
+"times": PackedFloat32Array(0, 0.75, 1.25, 2),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -55,11 +40,55 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g6qae"]
 _data = {
-"RESET": SubResource("Animation_atbin"),
 "fade_in_out": SubResource("Animation_4t7jl")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hv01"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ndj72"]
+bg_color = Color(0.389708, 0.631434, 0.586409, 1)
+border_width_bottom = 2
+border_color = Color(0, 0.389509, 0.444439, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 4
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xe2ee"]
+bg_color = Color(0.445149, 0.694783, 0.647641, 1)
+border_width_bottom = 2
+border_color = Color(2.06962e-06, 0.448336, 0.510534, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 4
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qlrv6"]
+bg_color = Color(0.369226, 0.606057, 0.562139, 1)
+border_width_bottom = 2
+border_color = Color(0, 0.389509, 0.444439, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 4
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_5e2ee"]
+Button/styles/disabled = SubResource("StyleBoxFlat_ndj72")
+Button/styles/hover = SubResource("StyleBoxFlat_xe2ee")
+Button/styles/normal = SubResource("StyleBoxFlat_ndj72")
+Button/styles/pressed = SubResource("StyleBoxFlat_qlrv6")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_difup"]
 bg_color = Color(0.4452, 0.53, 0.514453, 1)
 border_width_bottom = 4
 border_color = Color(0.207, 0.227317, 0.23, 1)
@@ -72,7 +101,7 @@ shadow_size = 3
 shadow_offset = Vector2(0, 1)
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yp0xs"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gvrbl"]
 bg_color = Color(0.445149, 0.694783, 0.647641, 1)
 border_width_bottom = 4
 border_color = Color(2.06962e-06, 0.448336, 0.510534, 1)
@@ -85,7 +114,20 @@ shadow_size = 3
 shadow_offset = Vector2(0, 1)
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8dwxg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pum25"]
+bg_color = Color(0.389708, 0.631434, 0.586409, 1)
+border_width_bottom = 4
+border_color = Color(0, 0.389509, 0.444439, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 4
+shadow_size = 3
+shadow_offset = Vector2(0, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t3m5t"]
 bg_color = Color(0.369226, 0.606057, 0.562139, 1)
 border_width_bottom = 4
 border_color = Color(0, 0.389509, 0.444439, 1)
@@ -99,10 +141,10 @@ shadow_offset = Vector2(0, 1)
 anti_aliasing = false
 
 [sub_resource type="Theme" id="Theme_nwwls"]
-Button/styles/disabled = SubResource("StyleBoxFlat_7hv01")
-Button/styles/hover = SubResource("StyleBoxFlat_yp0xs")
-Button/styles/normal = ExtResource("6_i6uld")
-Button/styles/pressed = SubResource("StyleBoxFlat_8dwxg")
+Button/styles/disabled = SubResource("StyleBoxFlat_difup")
+Button/styles/hover = SubResource("StyleBoxFlat_gvrbl")
+Button/styles/normal = SubResource("StyleBoxFlat_pum25")
+Button/styles/pressed = SubResource("StyleBoxFlat_t3m5t")
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_bhjno")
@@ -151,6 +193,7 @@ position = Vector2(-42.5, -3)
 shape = SubResource("RectangleShape2D_7666n")
 
 [node name="Label(Press E)" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
 offset_left = -19.0
 offset_top = 72.0
 offset_right = 93.0
@@ -166,6 +209,30 @@ root_node = NodePath("../Label(Press E)")
 libraries = {
 "": SubResource("AnimationLibrary_g6qae")
 }
+
+[node name="Next Wave" type="Control" parent="."]
+z_index = 6
+layout_mode = 3
+anchors_preset = 0
+offset_left = 81.0
+offset_top = 65.0
+offset_right = 150.0
+offset_bottom = 80.0
+theme = SubResource("Theme_5e2ee")
+
+[node name="Button" type="Button" parent="Next Wave"]
+layout_mode = 0
+offset_right = 69.0
+offset_bottom = 15.0
+focus_mode = 0
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_disabled_color = Color(0.899258, 0.899258, 0.899258, 1)
+theme_override_fonts/font = ExtResource("5_bv2s7")
+theme_override_font_sizes/font_size = 8
+icon = ExtResource("7_62swk")
+icon_alignment = 1
 
 [node name="Popup" type="CanvasLayer" parent="."]
 layer = 10
