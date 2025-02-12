@@ -36,9 +36,8 @@ func _on_body_entered(body: Node2D):
 	if body.is_in_group("Fireball"):
 		queue_free()
 		body.queue_free()
-
-	if body == player:
-		player.damage(dmg)
+	
+	if body == player and player.damage(dmg):
 		if is_slowness:
 			player.apply_slow(slow_duration)
 		queue_free()

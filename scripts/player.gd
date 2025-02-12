@@ -3,10 +3,12 @@ extends CharacterBody2D
 @export var speed = 100.0
 @export var health: float = 100.0
 
-@onready var sprite: AnimatedSprite2D = $"./Sprite"
+@onready var sprite: AnimatedSprite2D = $Sprite
 @onready var screen_size: Vector2 = get_viewport_rect().size
 @onready var fireball_scene = preload("res://scenes/fireball.tscn")
 @onready var slow_timer: Timer = $Slow_Timer
+@onready var invin_timer: Timer = $Invincibility
+@onready var stats: Control = $"../Stats"
 
 var fireball_cooldown: float = 0.8
 var death_animation_duration: float = 4.0
@@ -109,12 +111,17 @@ func try_launch_fireball(fire_direction: Vector2) -> void:
 		fireball.set_direction(fire_direction)
 
 func damage(amount: int) -> bool:
-	if equipped_shield:
+	if not invin_timer.is_stopped():
+		return false
+	elif equipped_shield:
 		equipped_shield.reduce_durability()
+		invin_timer.start()
 		return false
 	else:
-		health -= amount
+		health = max(0, health - amount)
+		stats.update_health()
 		$AnimationPlayer.play("damage")
+		invin_timer.start()
 		return true
 
 func apply_slow(duration: float = 3.0) -> void:
@@ -137,8 +144,8 @@ func add_to_inventory(item: String) -> void:
 		inventory[item] = true
 	print(inventory)
 
-func update_coin_ui():                          #To-do
-	pass
+func update_coin_ui():
+	stats.update_coin(inventory["coins"])
 
 func spawn_drops():
 	pass

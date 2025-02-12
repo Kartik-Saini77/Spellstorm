@@ -27,6 +27,11 @@ WebProjectile="refers to web_projectile"
 Fireball="refers to the fireball player attack"
 Spider="refers to the spider enemy"
 
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
+theme/default_font_generate_mipmaps=true
+
 [input]
 
 up={

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://u32k0y4fvv83"]
+[gd_scene load_steps=19 format=4 uid="uid://u32k0y4fvv83"]
 
 [ext_resource type="PackedScene" uid="uid://b8kb1jk35rbdj" path="res://scenes/player.tscn" id="1_oexw6"]
 [ext_resource type="Texture2D" uid="uid://dal7u05r0g4c7" path="res://assets/Little Mage1-1/Tileset/TX Tileset Grass.png" id="2_ptofe"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cvxfs3m5hjnhy" path="res://assets/Little Mage1-1/Tileset/TX Props.png" id="5_dd7p6"]
 [ext_resource type="Texture2D" uid="uid://c52v5hie0uggt" path="res://assets/Little Mage1-1/Tileset/TX Shadow_Props.png" id="6_m7w7w"]
 [ext_resource type="PackedScene" uid="uid://cd3c3w8j77sqe" path="res://scenes/spider.tscn" id="8_ra2ut"]
+[ext_resource type="PackedScene" uid="uid://buci7kstsj8go" path="res://scenes/stats.tscn" id="9_uvj3q"]
 [ext_resource type="PackedScene" uid="uid://v81mqcapod0o" path="res://scenes/shop.tscn" id="11_ohako"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_weork"]
@@ -1427,7 +1428,6 @@ tile_map_data = PackedByteArray("AAD/////AwAUABAAAAD//wAAAwAUABEAAAAAAP//AwAVABA
 tile_set = SubResource("TileSet_4cg7y")
 
 [node name="Shop" parent="." instance=ExtResource("11_ohako")]
-visible = false
 
 [node name="Player" parent="." instance=ExtResource("1_oexw6")]
 
@@ -1442,17 +1442,8 @@ libraries = {
 [node name="Spider" parent="." instance=ExtResource("8_ra2ut")]
 position = Vector2(-130, 68)
 
-[node name="Spider2" parent="." instance=ExtResource("8_ra2ut")]
-position = Vector2(-136, -60)
-
-[node name="Spider3" parent="." instance=ExtResource("8_ra2ut")]
-position = Vector2(-133, 4)
-
-[node name="Spider4" parent="." instance=ExtResource("8_ra2ut")]
-position = Vector2(133, -66)
-
-[node name="Spider5" parent="." instance=ExtResource("8_ra2ut")]
-position = Vector2(134, 1)
-
-[node name="Spider6" parent="." instance=ExtResource("8_ra2ut")]
-position = Vector2(137, 75)
+[node name="Stats" parent="." instance=ExtResource("9_uvj3q")]
+offset_left = -160.0
+offset_top = -90.0
+offset_right = -160.0
+offset_bottom = -90.0

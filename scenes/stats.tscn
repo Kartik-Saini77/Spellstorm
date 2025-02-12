@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=3 uid="uid://buci7kstsj8go"]
+
+[ext_resource type="Texture2D" uid="uid://88bb5l7b311h" path="res://assets/Healthbar.png" id="1_62vmh"]
+[ext_resource type="Script" path="res://scripts/stats.gd" id="1_o1ost"]
+[ext_resource type="FontFile" uid="uid://djw6p78gsyxsv" path="res://assets/fonts/dogica.ttf" id="2_3ghpe"]
+[ext_resource type="Texture2D" uid="uid://v6v42lpf5xwo" path="res://assets/Healthbar_under.png" id="2_75ue0"]
+[ext_resource type="Texture2D" uid="uid://cs6s018vaorpj" path="res://assets/Healthbar_progress.png" id="4_i6g18"]
+[ext_resource type="Texture2D" uid="uid://bnkgyhxcrysf0" path="res://assets/coin(32x32).png" id="6_5sx8y"]
+
+[node name="Stats" type="Control"]
+modulate = Color(0.903598, 0.903598, 0.903598, 1)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_o1ost")
+
+[node name="Healthbar" type="Node2D" parent="."]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Healthbar"]
+z_index = 49
+offset_left = 11.0
+offset_top = 9.0
+offset_right = 101.0
+offset_bottom = 21.0
+value = 50.0
+texture_under = ExtResource("2_75ue0")
+texture_over = ExtResource("1_62vmh")
+texture_progress = ExtResource("4_i6g18")
+texture_progress_offset = Vector2(12, 4)
+tint_under = Color(0.5, 0.5, 0.5, 1)
+
+[node name="Label" type="Label" parent="Healthbar"]
+z_index = 50
+offset_left = 102.0
+offset_top = 12.0
+offset_right = 159.0
+offset_bottom = 19.0
+scale = Vector2(0.6, 0.6)
+theme_override_fonts/font = ExtResource("2_3ghpe")
+theme_override_font_sizes/font_size = 8
+text = "100/100"
+
+[node name="HighScore" type="Label" parent="."]
+z_index = 50
+layout_mode = 0
+offset_left = 238.0
+offset_top = 12.0
+offset_right = 358.0
+offset_bottom = 19.0
+scale = Vector2(0.6, 0.6)
+theme_override_fonts/font = ExtResource("2_3ghpe")
+theme_override_font_sizes/font_size = 8
+text = "High Score:0000"
+
+[node name="Score" type="Label" parent="."]
+z_index = 50
+layout_mode = 0
+offset_left = 262.0
+offset_top = 20.0
+offset_right = 342.0
+offset_bottom = 27.0
+scale = Vector2(0.6, 0.6)
+theme_override_fonts/font = ExtResource("2_3ghpe")
+theme_override_font_sizes/font_size = 8
+text = "Score:0000"
+
+[node name="Coin_Count" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Coin_Count"]
+position = Vector2(16, 31)
+scale = Vector2(0.4375, 0.4375)
+texture = ExtResource("6_5sx8y")
+
+[node name="Label" type="Label" parent="Coin_Count"]
+z_index = 50
+offset_left = 26.0
+offset_top = 27.0
+offset_right = 52.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("2_3ghpe")
+theme_override_font_sizes/font_size = 8
+text = "0"
+
+[connection signal="mouse_entered" from="Healthbar/TextureProgressBar" to="." method="_on_healthbar_mouse_entered"]
+[connection signal="mouse_exited" from="Healthbar/TextureProgressBar" to="." method="_on_healthbar_mouse_exited"]

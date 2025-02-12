@@ -158,6 +158,7 @@ func die() -> void:
 	sprite.play("upside_down")
 	await sprite.animation_finished
 	drop_loot()
+	$"../Stats".update_score(100)
 	queue_free()
 
 func drop_loot() -> void:
