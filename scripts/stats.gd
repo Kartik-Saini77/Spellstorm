@@ -10,13 +10,15 @@ extends Control
 
 var score: int = 0
 var high_score: int = 0
+const SAVE_PATH = "user://high_score.save"
 
 func _ready():
 	healthbar.value = player.health / max_health * 100.0
 	health_label.text = str(player.health) + "/" + str(max_health)
 	health_label.visible = false
 	score_label.text = "Score:0000"
-	high_score_label.text = "High Score:0000"
+	load_high_score()
+	high_score_label.text = "High Score:" + str(high_score).pad_zeros(4)
 
 func _process(_delta: float) -> void:
 	pass
@@ -41,6 +43,18 @@ func update_score(amount: int) -> void:
 	if score > high_score:
 		high_score = score
 		high_score_label.text = "High Score:" + str(high_score).pad_zeros(4)
+		save_high_score()
 
 func wave_cleared() -> void:
 	update_score(500)
+
+func save_high_score() -> void:
+	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	file.store_var(high_score)
+	file.close()
+
+func load_high_score() -> void:
+	if FileAccess.file_exists(SAVE_PATH):
+		var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
+		high_score = file.get_var()
+		file.close()

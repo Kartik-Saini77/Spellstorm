@@ -43,7 +43,7 @@ _data = {
 "fade_in_out": SubResource("Animation_4t7jl")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ndj72"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8iynt"]
 bg_color = Color(0.389708, 0.631434, 0.586409, 1)
 border_width_bottom = 2
 border_color = Color(0, 0.389509, 0.444439, 1)
@@ -56,7 +56,7 @@ shadow_size = 1
 shadow_offset = Vector2(0, 1)
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xe2ee"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qd211"]
 bg_color = Color(0.445149, 0.694783, 0.647641, 1)
 border_width_bottom = 2
 border_color = Color(2.06962e-06, 0.448336, 0.510534, 1)
@@ -69,7 +69,7 @@ shadow_size = 1
 shadow_offset = Vector2(0, 1)
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qlrv6"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qumnh"]
 bg_color = Color(0.369226, 0.606057, 0.562139, 1)
 border_width_bottom = 2
 border_color = Color(0, 0.389509, 0.444439, 1)
@@ -83,10 +83,10 @@ shadow_offset = Vector2(0, 1)
 anti_aliasing = false
 
 [sub_resource type="Theme" id="Theme_5e2ee"]
-Button/styles/disabled = SubResource("StyleBoxFlat_ndj72")
-Button/styles/hover = SubResource("StyleBoxFlat_xe2ee")
-Button/styles/normal = SubResource("StyleBoxFlat_ndj72")
-Button/styles/pressed = SubResource("StyleBoxFlat_qlrv6")
+Button/styles/disabled = SubResource("StyleBoxFlat_8iynt")
+Button/styles/hover = SubResource("StyleBoxFlat_qd211")
+Button/styles/normal = SubResource("StyleBoxFlat_8iynt")
+Button/styles/pressed = SubResource("StyleBoxFlat_qumnh")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_difup"]
 bg_color = Color(0.4452, 0.53, 0.514453, 1)

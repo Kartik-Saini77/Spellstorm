@@ -1,17 +1,15 @@
-[gd_scene load_steps=19 format=4 uid="uid://u32k0y4fvv83"]
+[gd_scene load_steps=22 format=4 uid="uid://b3l5gcjyrfie5"]
 
-[ext_resource type="PackedScene" uid="uid://b8kb1jk35rbdj" path="res://scenes/player.tscn" id="1_oexw6"]
-[ext_resource type="Texture2D" uid="uid://dal7u05r0g4c7" path="res://assets/Little Mage1-1/Tileset/TX Tileset Grass.png" id="2_ptofe"]
-[ext_resource type="Texture2D" uid="uid://dwpmj7nbyksb" path="res://assets/Little Mage1-1/Tileset/TX Plant.png" id="3_el66c"]
-[ext_resource type="Texture2D" uid="uid://deej4rhqer60p" path="res://assets/Little Mage1-1/Tileset/TX Shadow Plant.png" id="4_k2xit"]
-[ext_resource type="Texture2D" uid="uid://cvxfs3m5hjnhy" path="res://assets/Little Mage1-1/Tileset/TX Props.png" id="5_dd7p6"]
-[ext_resource type="Texture2D" uid="uid://c52v5hie0uggt" path="res://assets/Little Mage1-1/Tileset/TX Shadow_Props.png" id="6_m7w7w"]
-[ext_resource type="PackedScene" uid="uid://cd3c3w8j77sqe" path="res://scenes/spider.tscn" id="8_ra2ut"]
-[ext_resource type="PackedScene" uid="uid://buci7kstsj8go" path="res://scenes/stats.tscn" id="9_uvj3q"]
-[ext_resource type="PackedScene" uid="uid://v81mqcapod0o" path="res://scenes/shop.tscn" id="11_ohako"]
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_n131b"]
+[ext_resource type="FontFile" uid="uid://djw6p78gsyxsv" path="res://assets/fonts/dogica.ttf" id="1_ukqvb"]
+[ext_resource type="Texture2D" uid="uid://dal7u05r0g4c7" path="res://assets/Little Mage1-1/Tileset/TX Tileset Grass.png" id="2_ax0ld"]
+[ext_resource type="Texture2D" uid="uid://dwpmj7nbyksb" path="res://assets/Little Mage1-1/Tileset/TX Plant.png" id="3_ahq6y"]
+[ext_resource type="Texture2D" uid="uid://deej4rhqer60p" path="res://assets/Little Mage1-1/Tileset/TX Shadow Plant.png" id="4_xjsh4"]
+[ext_resource type="Texture2D" uid="uid://cvxfs3m5hjnhy" path="res://assets/Little Mage1-1/Tileset/TX Props.png" id="5_0n430"]
+[ext_resource type="Texture2D" uid="uid://c52v5hie0uggt" path="res://assets/Little Mage1-1/Tileset/TX Shadow_Props.png" id="6_wyqph"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ditkq"]
-texture = ExtResource("2_ptofe")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x232m"]
+texture = ExtResource("2_ax0ld")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -269,8 +267,8 @@ texture = ExtResource("2_ptofe")
 14:15/0 = 0
 15:15/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6lx11"]
-texture = ExtResource("3_el66c")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t37ls"]
+texture = ExtResource("3_ahq6y")
 11:1/0 = 0
 12:1/0 = 0
 13:1/0 = 0
@@ -564,8 +562,8 @@ texture = ExtResource("3_el66c")
 8:5/next_alternative_id = 2
 8:5/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ysahy"]
-texture = ExtResource("4_k2xit")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w4k4t"]
+texture = ExtResource("4_xjsh4")
 4:6/0 = 0
 5:6/0 = 0
 6:6/0 = 0
@@ -665,8 +663,8 @@ texture = ExtResource("4_k2xit")
 22:14/0 = 0
 23:14/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6rhaf"]
-texture = ExtResource("5_dd7p6")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o4g5y"]
+texture = ExtResource("5_0n430")
 14:0/0 = 0
 15:0/0 = 0
 24:0/0 = 0
@@ -1021,8 +1019,8 @@ texture = ExtResource("5_dd7p6")
 18:31/0 = 0
 19:31/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bwebd"]
-texture = ExtResource("6_m7w7w")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2y8fv"]
+texture = ExtResource("6_wyqph")
 24:0/0 = 0
 25:0/0 = 0
 2:1/0 = 0
@@ -1343,113 +1341,261 @@ texture = ExtResource("6_m7w7w")
 10:31/0 = 0
 11:31/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_4cg7y"]
-sources/0 = SubResource("TileSetAtlasSource_ditkq")
-sources/1 = SubResource("TileSetAtlasSource_6lx11")
-sources/2 = SubResource("TileSetAtlasSource_ysahy")
-sources/3 = SubResource("TileSetAtlasSource_6rhaf")
-sources/4 = SubResource("TileSetAtlasSource_bwebd")
+[sub_resource type="TileSet" id="TileSet_2mqb1"]
+sources/0 = SubResource("TileSetAtlasSource_x232m")
+sources/1 = SubResource("TileSetAtlasSource_t37ls")
+sources/2 = SubResource("TileSetAtlasSource_w4k4t")
+sources/3 = SubResource("TileSetAtlasSource_o4g5y")
+sources/4 = SubResource("TileSetAtlasSource_2y8fv")
 
-[sub_resource type="Animation" id="Animation_6i1ak"]
-resource_name = "fade_in"
-length = 0.8
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ndj72"]
+bg_color = Color(0.389708, 0.631434, 0.586409, 1)
+border_width_bottom = 2
+border_color = Color(0, 0.389509, 0.444439, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 4
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xe2ee"]
+bg_color = Color(0.445149, 0.694783, 0.647641, 1)
+border_width_bottom = 2
+border_color = Color(2.06962e-06, 0.448336, 0.510534, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 4
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qlrv6"]
+bg_color = Color(0.369226, 0.606057, 0.562139, 1)
+border_width_bottom = 2
+border_color = Color(0, 0.389509, 0.444439, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 4
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_6ntqa"]
+Button/styles/disabled = SubResource("StyleBoxFlat_ndj72")
+Button/styles/hover = SubResource("StyleBoxFlat_xe2ee")
+Button/styles/normal = SubResource("StyleBoxFlat_ndj72")
+Button/styles/pressed = SubResource("StyleBoxFlat_qlrv6")
+
+[sub_resource type="Animation" id="Animation_d6dtj"]
+resource_name = "move_up"
+length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TileMaps/Rune:modulate")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(0, 1.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Vector2(0, 0), Vector2(0, -180)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TileMaps:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(160, 90), Vector2(160, 270)]
 }
 
-[sub_resource type="Animation" id="Animation_qpbbp"]
-resource_name = "fade_out"
+[sub_resource type="Animation" id="Animation_dmf5f"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TileMaps/Rune:modulate")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TileMaps:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(160, 90)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_t4wbw"]
+[sub_resource type="Animation" id="Animation_8ntb3"]
+resource_name = "move_down"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -180), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TileMaps:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(160, 270), Vector2(160, 90)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2bmmm"]
 _data = {
-"fade_in": SubResource("Animation_6i1ak"),
-"fade_out": SubResource("Animation_qpbbp")
+"RESET": SubResource("Animation_dmf5f"),
+"move_down": SubResource("Animation_8ntb3"),
+"move_up": SubResource("Animation_d6dtj")
 }
 
-[node name="Game" type="Node2D"]
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -640.0
+offset_bottom = -360.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n131b")
 
 [node name="TileMaps" type="Node2D" parent="."]
+position = Vector2(160, 90)
 
 [node name="Ground" type="TileMapLayer" parent="TileMaps"]
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD5//z/AAAJAAAAAAD5//3/AAAJAAEAAAD5//7/AAANAAYAAAD6//z/AAAEAAIAAAD6//3/AAAEAAMAAAD6//7/AAAOAAYAAAD7//z/AAAHAAQAAAD7//7/AAAPAAYAAAD8//z/AAAIAAQAAAD8//3/AAAIAAUAAAD8//7/AAAOAAQAAAD9//z/AAALAAYAAAD9//3/AAALAAcAAAD9//7/AAAPAAQAAAD+//z/AAAAAAIAAAD+//3/AAAAAAMAAAD+//7/AAAAAAQAAAD///z/AAABAAIAAAD///3/AAABAAMAAAD///7/AAABAAQAAAAAAPz/AAACAAIAAAAAAP3/AAACAAMAAAAAAP7/AAACAAQAAAABAPz/AAADAAIAAAABAP3/AAADAAMAAAABAP7/AAADAAQAAAD/////AAABAAUAAAD//wAAAAABAAAAAAD//wEAAAABAAEAAAAAAP//AAACAAUAAAAAAAAAAAACAAAAAAAAAAEAAAACAAEAAAABAP//AAADAAUAAAABAAAAAAADAAAAAAABAAEAAAADAAEAAAACAP//AAAIAAYAAAACAAAAAAAIAAcAAAACAAEAAAAEAAEAAAADAP//AAAJAAYAAAADAAAAAAAJAAcAAAADAAEAAAAFAAEAAAAEAP//AAAGAAUAAAAEAAAAAAAEAAMAAAAEAAEAAAAEAAMAAAACAPz/AAAEAAIAAAACAP3/AAAEAAMAAAACAP7/AAAEAAQAAAADAPz/AAAIAAIAAAADAP3/AAAIAAMAAAADAP7/AAAFAAQAAAAEAPz/AAAJAAIAAAAEAP7/AAAGAAQAAAAFAAAAAAAHAAAAAAAFAAEAAAAHAAEAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAEAAAAHAP//AAALAAEAAAAHAAAAAAABAAAAAAAHAAEAAAABAAEAAAAFAPz/AAAHAAIAAAAGAPz/AAAAAAIAAAAGAP3/AAAAAAMAAAAHAPz/AAABAAIAAAAHAP3/AAABAAMAAAAHAP7/AAABAAQAAAD8////AAAGAAUAAAD8/wAAAAAGAAAAAAD8/wEAAAAGAAEAAAD9////AAAHAAUAAAD9/wAAAAAHAAAAAAD9/wEAAAAHAAEAAAD+////AAAAAAUAAAD+/wAAAAAAAAAAAAD+/wEAAAAAAAEAAAD5////AAANAAcAAAD5/wAAAAANAAEAAAD5/wEAAAADAAEAAAD6////AAAOAAcAAAD6/wAAAAAOAAEAAAD6/wEAAAAOAAIAAAD7////AAAPAAcAAAD7/wAAAAAFAAAAAAD7/wEAAAAFAAEAAAD5/wIAAAAMAAQAAAD5/wMAAAAMAAUAAAD5/wQAAAADAAQAAAD6/wIAAAANAAQAAAD6/wMAAAANAAUAAAD6/wQAAAAEAAQAAAD7/wIAAAAFAAIAAAD7/wMAAAAFAAMAAAD7/wQAAAAFAAQAAAD8/wIAAAAEAAMAAAD8/wMAAAAGAAMAAAD8/wQAAAAGAAQAAAD9/wIAAAAHAAIAAAD9/wMAAAAEAAMAAAD9/wQAAAAKAAUAAAD+/wIAAAAKAAYAAAD+/wMAAAAAAAMAAAD+/wQAAAALAAUAAAD//wIAAAABAAIAAAD//wMAAAABAAMAAAD//wQAAAABAAQAAAAAAAIAAAACAAIAAAAAAAMAAAACAAMAAAAAAAQAAAACAAQAAAABAAIAAAADAAIAAAABAAMAAAADAAMAAAABAAQAAAADAAQAAAACAAIAAAAEAAIAAAACAAMAAAAEAAMAAAACAAQAAAAEAAQAAAADAAIAAAAJAAYAAAADAAMAAAAJAAcAAAADAAQAAAAFAAQAAAAEAAIAAAAKAAYAAAAEAAMAAAAKAAcAAAAEAAQAAAAGAAQAAAAFAAIAAAAHAAIAAAAFAAMAAAAEAAMAAAAFAAQAAAAHAAQAAAAGAAIAAAAAAAIAAAAGAAMAAAAAAAMAAAAGAAQAAAAAAAQAAAAHAAIAAAAPAAMAAAAHAAMAAAAPAAQAAAAHAAQAAAAPAAUAAAD4//v/AAACAAEAAAD4//z/AAAIAAAAAAD4//3/AAAIAAEAAAD5//v/AAADAAEAAAD4//7/AAAMAAYAAAD4////AAAMAAcAAAD4/wAAAAACAAAAAAD4/wEAAAACAAEAAAD4/wIAAAACAAIAAAD4/wMAAAACAAMAAAD4/wQAAAACAAQAAAD6//v/AAAEAAEAAAD7//v/AAAFAAEAAAD8//v/AAAGAAEAAAD9//v/AAAEAAMAAAD+//v/AAAAAAEAAAD///v/AAABAAEAAAADAPv/AAAFAAEAAAAEAPv/AAAGAAEAAAAFAPv/AAAEAAMAAAAHAPv/AAABAAEAAAAAAPv/AAAMAAcAAAD7//3/AAAHAAUAAAAFAP7/AAAHAAQAAAAFAP//AAAHAAUAAAAGAP7/AAAAAAQAAAAGAP//AAAAAAUAAAABAPv/AAANAAcAAAACAPv/AAAEAAEAAAD2//r/AAAAAAAAAAD3//r/AAABAAAAAAD2//3/AAAAAAMAAAD2//7/AAAAAAQAAAD3//3/AAABAAMAAAD3//7/AAABAAQAAAD2/wMAAAAAAAMAAAD2/wQAAAAAAAQAAAD3/wMAAAABAAMAAAD3/wQAAAAEAAMAAAD6/wUAAAAEAAUAAAD7/wUAAAAFAAUAAAAIAAUAAAACAAUAAAAJAAUAAAADAAUAAAAIAPz/AAACAAIAAAAIAP3/AAAEAAMAAAAJAPz/AAADAAIAAAAJAP3/AAADAAMAAAAGAAUAAAAAAAUAAAAHAAUAAAABAAUAAAD+//r/AAAAAAAAAAD///r/AAABAAAAAAD2/wAAAAAAAAAAAAD2/wEAAAAAAAEAAAD3/wAAAAABAAAAAAD3/wEAAAABAAEAAAD4/wUAAAACAAUAAAD5/wUAAAADAAUAAAACAPr/AAAEAAAAAAADAPr/AAAFAAAAAAAIAPr/AAACAAAAAAAIAPv/AAACAAEAAAAJAPr/AAADAAAAAAAJAPv/AAADAAEAAAAIAAMAAAACAAMAAAAIAAQAAAACAAQAAAAJAAMAAAADAAMAAAAJAAQAAAADAAQAAAD//wUAAAABAAUAAAAAAAUAAAACAAUAAAD2/wIAAAAAAAIAAAD3/wIAAAABAAIAAAD2//v/AAAAAAEAAAD2//z/AAAAAAIAAAD3//v/AAABAAEAAAD3//z/AAABAAIAAAAAAPr/AAAMAAYAAAABAPr/AAANAAYAAAAEAAUAAAAGAAUAAAAFAAUAAAAHAAUAAAAEAPr/AAAGAAAAAAAFAPr/AAAHAAAAAAD8/wUAAAAGAAUAAAD9/wUAAAAHAAUAAAAIAP7/AAACAAQAAAAIAP//AAACAAUAAAAJAP7/AAADAAQAAAAJAP//AAADAAUAAAD2////AAAAAAUAAAD3////AAABAAUAAAD4//r/AAACAAAAAAD5//r/AAADAAAAAAD6//r/AAAEAAAAAAD7//r/AAAFAAAAAAD8//r/AAAGAAAAAAD9//r/AAAHAAAAAAAGAPr/AAAAAAAAAAAHAPr/AAABAAAAAAD2/wUAAAAAAAUAAAD3/wUAAAABAAUAAAD+/wUAAAAAAAUAAAABAAUAAAADAAUAAAACAAUAAAAEAAUAAAADAAUAAAAFAAUAAAAIAAAAAAACAAAAAAAIAAEAAAACAAEAAAAJAAAAAAADAAAAAAAJAAEAAAADAAEAAAAIAAIAAAACAAIAAAAJAAIAAAADAAIAAAAFAP3/AAAHAAMAAAAGAPv/AAAAAAEAAAAEAP3/AAAJAAMAAAA=")
-tile_set = SubResource("TileSet_4cg7y")
+tile_set = SubResource("TileSet_2mqb1")
 
 [node name="Tree1_S" type="TileMapLayer" parent="TileMaps"]
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD3//r/AgADAAcAAAD3//v/AgADAAgAAAD3//z/AgADAAkAAAD4//r/AgAEAAcAAAD4//v/AgAEAAgAAAD4//z/AgAEAAkAAAD5//r/AgAFAAcAAAD5//v/AgAFAAgAAAD5//z/AgAFAAkAAAD6//r/AgAGAAcAAAD6//v/AgAUAAgAAAD6//z/AgAUAAkAAAD7//r/AgAVAAcAAAD7//v/AgAVAAgAAAD7//z/AgAVAAkAAAD8//r/AgAWAAcAAAD8//v/AgAWAAgAAAADAPr/AgATAAgAAAADAPv/AgAIAAgAAAAEAPr/AgAUAAgAAAAEAPv/AgAUAAkAAAAFAPr/AgAVAAgAAAAFAPv/AgAVAAkAAAAGAPr/AgAWAAgAAAAGAPv/AgAWAAkAAAAHAPr/AgAXAAgAAAAHAPv/AgAXAAkAAAD8//z/AgAWAAkAAAD9//r/AgAXAAcAAAD9//v/AgAXAAgAAAD9//z/AgAXAAkAAAD+//v/AgADAAgAAAD+//z/AgADAAkAAAD///v/AgAEAAgAAAD///z/AgAEAAkAAAAAAPr/AgAFAAcAAAAAAPv/AgAFAAgAAAAAAPz/AgAFAAkAAAABAPr/AgAGAAcAAAABAPv/AgAGAAgAAAABAPz/AgAGAAkAAAACAPr/AgAHAAcAAAACAPv/AgAHAAgAAAACAPz/AgAHAAkAAAD///r/AgAEAAcAAAD+//r/AgADAAcAAAA=")
-tile_set = SubResource("TileSet_4cg7y")
+tile_set = SubResource("TileSet_2mqb1")
 
 [node name="Tree1" type="TileMapLayer" parent="TileMaps"]
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD4//r/AQAEAAgAAAD4//v/AQAEAAkAAAD5//r/AQAFAAgAAAD5//v/AQAFAAkAAAD6//r/AQATAAcAAAD7//r/AQAUAAcAAAD8//r/AQAVAAcAAAD9//r/AQAWAAcAAAAEAPr/AQAUAAgAAAAEAPv/AQAUAAkAAAAFAPr/AQAVAAgAAAAFAPv/AQAVAAkAAAAAAPr/AQAMAAgAAAAAAPv/AQAMAAkAAAABAPr/AQANAAgAAAABAPv/AQANAAkAAAAIAP//AgANAA4AAAAJAP//AQAKAAIAAAD7//v/AQAUAAgAAAD8//v/AQAVAAgAAAD8//z/AQAVAAkAAAD7//z/AQAUAAkAAAAJAAAAAQAKAAMAAAAJAAEAAQAKAAQAAAAJAAIAAQAKAAUAAAAJAAMAAQAKAAYAAAA=")
-tile_set = SubResource("TileSet_4cg7y")
+tile_set = SubResource("TileSet_2mqb1")
 
 [node name="Bush_S" type="TileMapLayer" parent="TileMaps"]
 use_parent_material = true
 tile_map_data = PackedByteArray("AAAIAPv/AgARAA0AAAAJAPv/AgASAA0AAAAJAPz/AgASAA4AAAD2/wQAAgAKAAwAAAD2/wUAAgAKAA0AAAD3/wQAAgALAAwAAAD3/wUAAgALAA0AAAD4/wUAAgAMAA0AAAAGAPr/AgAKAA0AAAAHAPr/AgALAA0AAAAIAPr/AgAMAA0AAAAIAP7/AgANAA0AAAAIAP//AgANAA4AAAAJAP3/AgAOAAwAAAAJAP7/AgAOAA0AAAAJAP//AgAOAA4AAAA=")
-tile_set = SubResource("TileSet_4cg7y")
+tile_set = SubResource("TileSet_2mqb1")
 
 [node name="Bushes" type="TileMapLayer" parent="TileMaps"]
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD9//7/AwAWABEAAAD9////AwAWABIAAAD9/wAAAwAWABMAAAD9/wEAAwAWABQAAAD+//7/AwAXABEAAAD+////AwAXABIAAAD+/wAAAwAXABMAAAD+/wEAAwAXABQAAAD+/wIAAwAXABUAAAD///3/AwAYABAAAAD/////AwAYABIAAAD//wAAAwAYABMAAAD//wEAAwAYABQAAAD//wIAAwAYABUAAAAAAP3/AwAZABAAAAAAAP7/AwAZABEAAAAAAP//AwAZABIAAAAAAAAAAwAZABMAAAAAAAEAAwAZABQAAAAAAAIAAwAZABUAAAABAP7/AwAaABEAAAABAP//AwAaABIAAAABAAAAAwAaABMAAAABAAEAAwAaABQAAAABAAIAAwAaABUAAAACAP7/AwAbABEAAAACAP//AwAbABIAAAACAAAAAwAbABMAAAACAAEAAwAbABQAAAD///7/AwAYABEAAAAIAPr/AQAMAA0AAAAIAPv/AQARAA0AAAAJAPn/AQASAAsAAAAJAPr/AQASAAwAAAAJAPv/AQASAA0AAAAJAPz/AQAOAAsAAAAIAP3/AQANAAwAAAAIAP7/AQANAA0AAAAJAP3/AQAOAAwAAAAJAP7/AQAOAA0AAAAJAP//AQAOAA4AAAD2/wMAAQAOAAsAAAD2/wQAAQAOAAwAAAD2/wUAAQAOAA0AAAD3/wMAAQAPAAsAAAD3/wQAAQAPAAwAAAD3/wUAAQAPAA0AAAD4/wQAAQAQAAwAAAD4/wUAAQAQAA0AAAAFAAUAAQANAAwAAAAGAAQAAQAOAAsAAAAGAAUAAQAOAAwAAAAHAAQAAQAPAAsAAAAHAAUAAQAPAAwAAAAIAAUAAQAQAAwAAAD4//r/AQAYAAwAAAD4//v/AQAYAA0AAAD2//r/AQAWAAwAAAD2//v/AQAWAA0AAAD2//z/AQAWAA4AAAD3//r/AQAXAAwAAAD3//v/AQAXAA0AAAAFAPr/AQAJAA0AAAAGAPr/AQAKAA0AAAAHAPr/AQALAA0AAAA=")
-tile_set = SubResource("TileSet_4cg7y")
+tile_set = SubResource("TileSet_2mqb1")
 
 [node name="Tree2_S" type="TileMapLayer" parent="TileMaps"]
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD2/wIAAgAWAAgAAAD2/wMAAgAWAAkAAAD3/wEAAgAXAAcAAAD3/wIAAgAXAAgAAAD3/wMAAgAXAAkAAAD2/wEAAgAWAAcAAAA=")
-tile_set = SubResource("TileSet_4cg7y")
+tile_set = SubResource("TileSet_2mqb1")
 
 [node name="Trees2" type="TileMapLayer" parent="TileMaps"]
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD2//v/AQAVAAIAAAD2//z/AQAVAAMAAAD2//3/AQAVAAQAAAD2//7/AQAVAAUAAAD2////AQAVAAYAAAD2/wAAAQAVAAcAAAD2/wEAAQAVAAgAAAD3//v/AQAWAAIAAAD3//z/AQAWAAMAAAD3//3/AQAWAAQAAAD3//7/AQAWAAUAAAD3////AQAWAAYAAAD3/wAAAQAWAAcAAAD4//3/AQAXAAQAAAD4//7/AQAXAAUAAAD4////AQAXAAYAAAD3/wUAAQACAAIAAAD4/wQAAQADAAEAAAD4/wUAAQADAAIAAAD5/wMAAQAEAAAAAAD5/wQAAQAEAAEAAAD5/wUAAQAEAAIAAAD6/wMAAQAFAAAAAAD6/wQAAQAFAAEAAAD6/wUAAQAFAAIAAAD7/wQAAQAGAAEAAAD7/wUAAQAGAAIAAAD8/wUAAQAHAAIAAAD9/wUAAQALAAEAAAD+/wUAAQAMAAEAAAD//wUAAQANAAEAAAAAAAUAAQAOAAEAAAACAAUAAQATAAIAAAADAAQAAQAUAAEAAAADAAUAAQAUAAIAAAAEAAUAAQAVAAIAAAAFAAUAAQAWAAIAAAD2/wIAAQAVAAkAAAA=")
-tile_set = SubResource("TileSet_4cg7y")
+tile_set = SubResource("TileSet_2mqb1")
 
-[node name="Rune" type="TileMapLayer" parent="TileMaps"]
-modulate = Color(1, 1, 1, 0)
-use_parent_material = true
-tile_map_data = PackedByteArray("AAAAAAAAAwAVABEAAAAAAP//AwAVABAAAAD//wAAAwAUABEAAAD/////AwAUABAAAAA=")
-tile_set = SubResource("TileSet_4cg7y")
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 33.0
+offset_right = 240.0
+offset_bottom = 47.0
+theme_override_fonts/font = ExtResource("1_ukqvb")
+theme_override_font_sizes/font_size = 16
+text = "SPELLSTORM"
 
-[node name="Shop" parent="." instance=ExtResource("11_ohako")]
+[node name="Play" type="Control" parent="."]
+z_index = 6
+anchors_preset = 0
+offset_left = 125.0
+offset_top = 130.0
+offset_right = 195.0
+offset_bottom = 146.0
+theme = SubResource("Theme_6ntqa")
 
-[node name="Player" parent="." instance=ExtResource("1_oexw6")]
-y_sort_enabled = true
+[node name="Button" type="Button" parent="Play"]
+layout_mode = 0
+offset_right = 70.0
+offset_bottom = 16.0
+focus_mode = 0
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_disabled_color = Color(0.899258, 0.899258, 0.899258, 1)
+theme_override_fonts/font = ExtResource("1_ukqvb")
+theme_override_font_sizes/font_size = 8
+text = "Play"
+icon_alignment = 1
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
+[node name="Exit" type="Control" parent="."]
+z_index = 6
+anchors_preset = 0
+offset_left = 125.0
+offset_top = 150.0
+offset_right = 195.0
+offset_bottom = 166.0
+theme = SubResource("Theme_6ntqa")
+
+[node name="Button" type="Button" parent="Exit"]
+layout_mode = 0
+offset_right = 70.0
+offset_bottom = 16.0
+focus_mode = 0
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_disabled_color = Color(0.899258, 0.899258, 0.899258, 1)
+theme_override_fonts/font = ExtResource("1_ukqvb")
+theme_override_font_sizes/font_size = 8
+text = "Exit"
+icon_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_t4wbw")
+"": SubResource("AnimationLibrary_2bmmm")
 }
 
-[node name="Spider" parent="." instance=ExtResource("8_ra2ut")]
-position = Vector2(-130, 68)
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(3, 3)
 
-[node name="Stats" parent="." instance=ExtResource("9_uvj3q")]
-offset_left = -160.0
-offset_top = -90.0
-offset_right = -160.0
-offset_bottom = -90.0
+[connection signal="pressed" from="Play/Button" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Exit/Button" to="." method="_on_exit_pressed"]
