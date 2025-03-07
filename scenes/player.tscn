@@ -362,6 +362,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+process_mode = 1
 z_index = 5
 script = ExtResource("1_vkwia")
 

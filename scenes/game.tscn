@@ -1,14 +1,18 @@
-[gd_scene load_steps=19 format=4 uid="uid://u32k0y4fvv83"]
+[gd_scene load_steps=27 format=4 uid="uid://u32k0y4fvv83"]
 
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_gftxd"]
 [ext_resource type="PackedScene" uid="uid://b8kb1jk35rbdj" path="res://scenes/player.tscn" id="1_oexw6"]
 [ext_resource type="Texture2D" uid="uid://dal7u05r0g4c7" path="res://assets/Little Mage1-1/Tileset/TX Tileset Grass.png" id="2_ptofe"]
 [ext_resource type="Texture2D" uid="uid://dwpmj7nbyksb" path="res://assets/Little Mage1-1/Tileset/TX Plant.png" id="3_el66c"]
 [ext_resource type="Texture2D" uid="uid://deej4rhqer60p" path="res://assets/Little Mage1-1/Tileset/TX Shadow Plant.png" id="4_k2xit"]
 [ext_resource type="Texture2D" uid="uid://cvxfs3m5hjnhy" path="res://assets/Little Mage1-1/Tileset/TX Props.png" id="5_dd7p6"]
 [ext_resource type="Texture2D" uid="uid://c52v5hie0uggt" path="res://assets/Little Mage1-1/Tileset/TX Shadow_Props.png" id="6_m7w7w"]
-[ext_resource type="PackedScene" uid="uid://cd3c3w8j77sqe" path="res://scenes/spider.tscn" id="8_ra2ut"]
 [ext_resource type="PackedScene" uid="uid://buci7kstsj8go" path="res://scenes/stats.tscn" id="9_uvj3q"]
+[ext_resource type="PackedScene" uid="uid://b8cvn2colm51d" path="res://scenes/pause.tscn" id="11_2t16i"]
 [ext_resource type="PackedScene" uid="uid://v81mqcapod0o" path="res://scenes/shop.tscn" id="11_ohako"]
+[ext_resource type="PackedScene" uid="uid://cwpgs62agtk0v" path="res://scenes/you_died.tscn" id="12_fud3d"]
+[ext_resource type="FontFile" uid="uid://djw6p78gsyxsv" path="res://assets/fonts/dogica.ttf" id="13_osan7"]
+[ext_resource type="Texture2D" uid="uid://c1mn8qauus7j5" path="res://assets/next_wave.png" id="14_tblix"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ditkq"]
 texture = ExtResource("2_ptofe")
@@ -1352,7 +1356,6 @@ sources/4 = SubResource("TileSetAtlasSource_bwebd")
 
 [sub_resource type="Animation" id="Animation_6i1ak"]
 resource_name = "fade_in"
-length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1360,7 +1363,7 @@ tracks/0/path = NodePath("TileMaps/Rune:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -1387,7 +1390,53 @@ _data = {
 "fade_out": SubResource("Animation_qpbbp")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8iynt"]
+bg_color = Color(0.389708, 0.631434, 0.586409, 1)
+border_width_bottom = 2
+border_color = Color(0, 0.389509, 0.444439, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 4
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qd211"]
+bg_color = Color(0.445149, 0.694783, 0.647641, 1)
+border_width_bottom = 2
+border_color = Color(2.06962e-06, 0.448336, 0.510534, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 4
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qumnh"]
+bg_color = Color(0.369226, 0.606057, 0.562139, 1)
+border_width_bottom = 2
+border_color = Color(0, 0.389509, 0.444439, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 4
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_ulgha"]
+Button/styles/disabled = SubResource("StyleBoxFlat_8iynt")
+Button/styles/hover = SubResource("StyleBoxFlat_qd211")
+Button/styles/normal = SubResource("StyleBoxFlat_8iynt")
+Button/styles/pressed = SubResource("StyleBoxFlat_qumnh")
+
 [node name="Game" type="Node2D"]
+script = ExtResource("1_gftxd")
 
 [node name="TileMaps" type="Node2D" parent="."]
 
@@ -1444,12 +1493,54 @@ zoom = Vector2(3, 3)
 libraries = {
 "": SubResource("AnimationLibrary_t4wbw")
 }
-
-[node name="Spider" parent="." instance=ExtResource("8_ra2ut")]
-position = Vector2(-130, 68)
+autoplay = "fade_in"
 
 [node name="Stats" parent="." instance=ExtResource("9_uvj3q")]
 offset_left = -160.0
 offset_top = -90.0
 offset_right = -160.0
 offset_bottom = -90.0
+
+[node name="Pause" parent="." instance=ExtResource("11_2t16i")]
+visible = false
+offset_left = -160.0
+offset_top = -90.0
+offset_right = -160.0
+offset_bottom = -90.0
+
+[node name="You_Died" parent="." instance=ExtResource("12_fud3d")]
+process_mode = 2
+visible = false
+offset_left = -160.0
+offset_top = -90.0
+offset_right = -160.0
+offset_bottom = -90.0
+
+[node name="Next Wave" type="Control" parent="."]
+visible = false
+z_index = 6
+layout_mode = 3
+anchors_preset = 0
+offset_left = 71.0
+offset_top = 65.0
+offset_right = 151.0
+offset_bottom = 80.0
+theme = SubResource("Theme_ulgha")
+
+[node name="Button" type="Button" parent="Next Wave"]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 15.0
+focus_mode = 0
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_disabled_color = Color(0.899258, 0.899258, 0.899258, 1)
+theme_override_fonts/font = ExtResource("13_osan7")
+theme_override_font_sizes/font_size = 8
+text = ":9"
+icon = ExtResource("14_tblix")
+
+[connection signal="next_wave" from="Shop" to="." method="start_wave"]
+[connection signal="died" from="Player" to="." method="_on_player_died"]
+[connection signal="pressed" from="Next Wave/Button" to="." method="start_wave"]

@@ -8,6 +8,8 @@ extends Node2D
 @onready var popup_description = $Popup/Description
 @onready var purchase_button = $Popup/Control/Button
 
+signal next_wave
+
 var items = {
 	"Crystal Wand": {"cost": 15, "description": "+10 Damage", "purchased": false, "texture": preload("res://assets/Little Mage1-1/_Staffs/staff_crystal.png")},
 	"Mighty Wand": {"cost": 25, "description": "+20 Damage", "purchased": false, "texture": preload("res://assets/Little Mage1-1/_Staffs/staff_mighty.png")},
@@ -95,10 +97,12 @@ func _on_purchase_pressed():
 			shield.position = player.global_position		# To-Do game logic
 
 func disable_shop():
+	$".".visible = false
 	popup.visible = false
 	label_press_e.visible = false
 	animation_player.stop()
 	current_item = null
+	$"Frog/CollisionShape2D".disabled = true
 	
 	for area in get_children():
 		if area is Area2D:
@@ -107,8 +111,13 @@ func disable_shop():
 					child.set_deferred("disabled", true)
 
 func enable_shop():
+	$"Frog/CollisionShape2D".disabled = false
+	$".".visible = true
 	for area in get_children():
 		if area is Area2D:
 			for child in area.get_children():
 				if child is CollisionShape2D:
 					child.set_deferred("disabled", false)
+
+func _on_next_wave_pressed() -> void:
+	next_wave.emit()

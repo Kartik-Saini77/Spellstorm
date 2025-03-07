@@ -43,6 +43,7 @@ animations = [{
 size = Vector2(10, 14)
 
 [node name="Fireball" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_jtb6w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

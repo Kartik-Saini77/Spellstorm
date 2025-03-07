@@ -43,6 +43,7 @@ animations = [{
 radius = 6.5
 
 [node name="Fireball" type="Node2D" groups=["Fireball"]]
+process_mode = 1
 z_index = 4
 script = ExtResource("1_un6kh")
 

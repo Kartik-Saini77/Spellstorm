@@ -66,6 +66,7 @@ text = "Score:0000"
 [node name="Coin_Count" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Coin_Count"]
+z_index = 50
 position = Vector2(16, 31)
 scale = Vector2(0.4375, 0.4375)
 texture = ExtResource("6_5sx8y")

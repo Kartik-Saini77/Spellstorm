@@ -1,0 +1,130 @@
+[gd_scene load_steps=7 format=3 uid="uid://cwpgs62agtk0v"]
+
+[ext_resource type="Script" path="res://scripts/you_died.gd" id="1_030w1"]
+[ext_resource type="FontFile" uid="uid://djw6p78gsyxsv" path="res://assets/fonts/dogica.ttf" id="2_sfyyy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ns6r"]
+bg_color = Color(0.389708, 0.631434, 0.586409, 1)
+border_width_bottom = 2
+border_color = Color(0, 0.389509, 0.444439, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 4
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rpt78"]
+bg_color = Color(0.445149, 0.694783, 0.647641, 1)
+border_width_bottom = 2
+border_color = Color(2.06962e-06, 0.448336, 0.510534, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 4
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3pjj2"]
+bg_color = Color(0.369226, 0.606057, 0.562139, 1)
+border_width_bottom = 2
+border_color = Color(0, 0.389509, 0.444439, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 4
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_6ntqa"]
+Button/styles/disabled = SubResource("StyleBoxFlat_3ns6r")
+Button/styles/hover = SubResource("StyleBoxFlat_rpt78")
+Button/styles/normal = SubResource("StyleBoxFlat_3ns6r")
+Button/styles/pressed = SubResource("StyleBoxFlat_3pjj2")
+
+[node name="You_Died" type="Control"]
+process_mode = 3
+z_index = 51
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_030w1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 51
+layout_mode = 1
+offset_right = 320.0
+offset_bottom = 180.0
+color = Color(0, 0, 0, 0.478431)
+
+[node name="Label" type="Label" parent="."]
+z_index = 51
+layout_mode = 0
+offset_left = 96.0
+offset_top = 33.0
+offset_right = 224.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(1, 0.23, 0.23, 1)
+theme_override_fonts/font = ExtResource("2_sfyyy")
+theme_override_font_sizes/font_size = 16
+text = "You Died"
+
+[node name="Play_Again" type="Control" parent="."]
+z_index = 51
+anchors_preset = 0
+offset_left = 120.0
+offset_top = 129.0
+offset_right = 200.0
+offset_bottom = 145.0
+theme = SubResource("Theme_6ntqa")
+
+[node name="Button" type="Button" parent="Play_Again"]
+layout_mode = 0
+offset_left = -6.0
+offset_right = 86.0
+offset_bottom = 16.0
+focus_mode = 0
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_disabled_color = Color(0.899258, 0.899258, 0.899258, 1)
+theme_override_fonts/font = ExtResource("2_sfyyy")
+theme_override_font_sizes/font_size = 8
+text = "Play Again"
+icon_alignment = 1
+
+[node name="Main Menu" type="Control" parent="."]
+z_index = 51
+anchors_preset = 0
+offset_left = 120.0
+offset_top = 150.0
+offset_right = 202.0
+offset_bottom = 168.0
+theme = SubResource("Theme_6ntqa")
+
+[node name="Button" type="Button" parent="Main Menu"]
+layout_mode = 0
+offset_left = -6.0
+offset_right = 86.0
+offset_bottom = 17.0
+focus_mode = 0
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_disabled_color = Color(0.899258, 0.899258, 0.899258, 1)
+theme_override_fonts/font = ExtResource("2_sfyyy")
+theme_override_font_sizes/font_size = 8
+text = "Main Menu"
+icon_alignment = 1
+
+[connection signal="pressed" from="Play_Again/Button" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="Main Menu/Button" to="." method="_on_main_menu_pressed"]

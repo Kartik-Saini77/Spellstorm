@@ -515,6 +515,7 @@ animations = [{
 radius = 24.0
 
 [node name="Shield_Of_Fire" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_skoju")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

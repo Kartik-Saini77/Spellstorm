@@ -18,6 +18,8 @@ extends CharacterBody2D
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("Player")
 
+signal died
+
 var is_attacking: bool = false
 var move_velocity: Vector2 = Vector2.ZERO
 var is_dead: bool = false
@@ -159,6 +161,7 @@ func die() -> void:
 	await sprite.animation_finished
 	drop_loot()
 	$"../Stats".update_score(100)
+	died.emit()
 	queue_free()
 
 func drop_loot() -> void:

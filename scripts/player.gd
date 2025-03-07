@@ -10,6 +10,8 @@ extends CharacterBody2D
 @onready var invin_timer: Timer = $Invincibility
 @onready var stats: Control = $"../Stats"
 
+signal died
+
 var fireball_cooldown: float = 0.8
 var death_animation_duration: float = 4.0
 var equipped_wand: String = "Wood"
@@ -19,6 +21,11 @@ var inventory = {
 	"coins": 50,
 	"shield": 0,
 	"fireball": false,
+}
+var wands = {
+	"Wood": 0,
+	"Crystal": 10,
+	"Mighty": 20,
 }
 
 func _physics_process(_delta: float) -> void:
@@ -37,7 +44,7 @@ func _physics_process(_delta: float) -> void:
 	if health <= 0:
 		play_animation("death")
 		await sprite.animation_finished
-		get_tree().call_deferred("reload_current_scene")
+		died.emit()
 	elif fire_direction != Vector2.ZERO:
 		attack(fire_direction)
 	elif direction != Vector2.ZERO:
@@ -105,10 +112,10 @@ func try_launch_fireball(fire_direction: Vector2) -> void:
 			fireball.position = position + Vector2(-9, -5)  # + Vector2(100, -100)
 		else:
 			fireball.position = position + Vector2(9, -5)
-
 		
-		get_parent().add_child(fireball)
+		fireball.damage = 30 + wands[equipped_wand]
 		fireball.set_direction(fire_direction)
+		get_parent().add_child(fireball)
 
 func damage(amount: int) -> bool:
 	if not invin_timer.is_stopped():

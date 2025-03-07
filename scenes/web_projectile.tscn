@@ -141,6 +141,7 @@ _data = {
 }
 
 [node name="WebProjectile" type="Node2D" groups=["WebProjectile"]]
+process_mode = 1
 script = ExtResource("1_1nago")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -43,7 +43,7 @@ _data = {
 "fade_in_out": SubResource("Animation_4t7jl")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8iynt"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wblcv"]
 bg_color = Color(0.389708, 0.631434, 0.586409, 1)
 border_width_bottom = 2
 border_color = Color(0, 0.389509, 0.444439, 1)
@@ -56,7 +56,7 @@ shadow_size = 1
 shadow_offset = Vector2(0, 1)
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qd211"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mk5h2"]
 bg_color = Color(0.445149, 0.694783, 0.647641, 1)
 border_width_bottom = 2
 border_color = Color(2.06962e-06, 0.448336, 0.510534, 1)
@@ -69,7 +69,7 @@ shadow_size = 1
 shadow_offset = Vector2(0, 1)
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qumnh"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pkvux"]
 bg_color = Color(0.369226, 0.606057, 0.562139, 1)
 border_width_bottom = 2
 border_color = Color(0, 0.389509, 0.444439, 1)
@@ -83,10 +83,10 @@ shadow_offset = Vector2(0, 1)
 anti_aliasing = false
 
 [sub_resource type="Theme" id="Theme_5e2ee"]
-Button/styles/disabled = SubResource("StyleBoxFlat_8iynt")
-Button/styles/hover = SubResource("StyleBoxFlat_qd211")
-Button/styles/normal = SubResource("StyleBoxFlat_8iynt")
-Button/styles/pressed = SubResource("StyleBoxFlat_qumnh")
+Button/styles/disabled = SubResource("StyleBoxFlat_wblcv")
+Button/styles/hover = SubResource("StyleBoxFlat_mk5h2")
+Button/styles/normal = SubResource("StyleBoxFlat_wblcv")
+Button/styles/pressed = SubResource("StyleBoxFlat_pkvux")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_difup"]
 bg_color = Color(0.4452, 0.53, 0.514453, 1)
@@ -147,6 +147,7 @@ Button/styles/normal = SubResource("StyleBoxFlat_pum25")
 Button/styles/pressed = SubResource("StyleBoxFlat_t3m5t")
 
 [node name="Shop" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_bhjno")
 
 [node name="Frog" type="StaticBody2D" parent="."]
@@ -158,6 +159,7 @@ texture = ExtResource("1_wimty")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Frog"]
 position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_taen8")
+disabled = true
 
 [node name="Crystal Wand" type="Area2D" parent="."]
 
@@ -214,15 +216,15 @@ libraries = {
 z_index = 6
 layout_mode = 3
 anchors_preset = 0
-offset_left = 81.0
+offset_left = 86.0
 offset_top = 65.0
-offset_right = 150.0
+offset_right = 151.0
 offset_bottom = 80.0
 theme = SubResource("Theme_5e2ee")
 
 [node name="Button" type="Button" parent="Next Wave"]
 layout_mode = 0
-offset_right = 69.0
+offset_right = 65.0
 offset_bottom = 15.0
 focus_mode = 0
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
@@ -232,7 +234,6 @@ theme_override_colors/icon_disabled_color = Color(0.899258, 0.899258, 0.899258, 
 theme_override_fonts/font = ExtResource("5_bv2s7")
 theme_override_font_sizes/font_size = 8
 icon = ExtResource("7_62swk")
-icon_alignment = 1
 
 [node name="Popup" type="CanvasLayer" parent="."]
 layer = 10
@@ -299,4 +300,5 @@ icon = ExtResource("8_1t8by")
 [connection signal="body_exited" from="Mighty Wand" to="." method="_on_item_area_exited"]
 [connection signal="body_entered" from="Shield Of Fire" to="." method="_on_shield_area_entered"]
 [connection signal="body_exited" from="Shield Of Fire" to="." method="_on_item_area_exited"]
+[connection signal="pressed" from="Next Wave/Button" to="." method="_on_next_wave_pressed"]
 [connection signal="pressed" from="Popup/Control/Button" to="." method="_on_purchase_pressed"]
