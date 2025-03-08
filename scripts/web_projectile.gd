@@ -2,14 +2,14 @@ extends Node2D
 
 @export var lifespan: float = 1.0
 @export var speed: float = 200.0
-@export var dmg: int = 20
+@export var dmg: float = 20
 @export var slow_duration: float = 3.0
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var lifespan_timer: Timer = $Lifespan
 @onready var player: Node2D = get_tree().get_first_node_in_group("Player")
 var is_slowness: bool = false
-var slow_prob: float = 20  # percentage (0, 100), will change based on curr wave
+var slow_prob: float = 10  # percentage (0, 100), will change based on curr wave
 
 var direction: Vector2 = Vector2.ZERO
 

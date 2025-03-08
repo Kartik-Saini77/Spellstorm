@@ -12,6 +12,7 @@ extends CharacterBody2D
 
 signal died
 
+var dmg: float = 31
 var fireball_cooldown: float = 0.8
 var death_animation_duration: float = 4.0
 var equipped_wand: String = "Wood"
@@ -24,8 +25,8 @@ var inventory = {
 }
 var wands = {
 	"Wood": 0,
-	"Crystal": 10,
-	"Mighty": 20,
+	"Crystal": 29,
+	"Mighty": 70,
 }
 
 func _physics_process(_delta: float) -> void:
@@ -109,15 +110,15 @@ func try_launch_fireball(fire_direction: Vector2) -> void:
 	if fire_direction != Vector2.ZERO:
 		var fireball = fireball_scene.instantiate()
 		if sprite.flip_h:
-			fireball.position = position + Vector2(-9, -5)  # + Vector2(100, -100)
+			fireball.position = position + Vector2(-9, -5)
 		else:
 			fireball.position = position + Vector2(9, -5)
 		
-		fireball.damage = 30 + wands[equipped_wand]
+		fireball.damage = dmg + wands[equipped_wand]
 		fireball.set_direction(fire_direction)
 		get_parent().add_child(fireball)
 
-func damage(amount: int) -> bool:
+func damage(amount: float) -> bool:
 	if not invin_timer.is_stopped():
 		return false
 	elif equipped_shield:
@@ -149,10 +150,6 @@ func add_to_inventory(item: String) -> void:
 		inventory["shield"] = 3
 	else:
 		inventory[item] = true
-	print(inventory)
 
 func update_coin_ui():
 	stats.update_coin(inventory["coins"])
-
-func spawn_drops():
-	pass

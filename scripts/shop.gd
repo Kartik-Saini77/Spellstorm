@@ -11,8 +11,8 @@ extends Node2D
 signal next_wave
 
 var items = {
-	"Crystal Wand": {"cost": 15, "description": "+10 Damage", "purchased": false, "texture": preload("res://assets/Little Mage1-1/_Staffs/staff_crystal.png")},
-	"Mighty Wand": {"cost": 25, "description": "+20 Damage", "purchased": false, "texture": preload("res://assets/Little Mage1-1/_Staffs/staff_mighty.png")},
+	"Crystal Wand": {"cost": 10, "description": "+10 Damage", "purchased": false, "texture": preload("res://assets/Little Mage1-1/_Staffs/staff_crystal.png")},
+	"Mighty Wand": {"cost": 20, "description": "+20 Damage", "purchased": false, "texture": preload("res://assets/Little Mage1-1/_Staffs/staff_mighty.png")},
 	"Shield Of Fire": {"cost": 5, "description": "Blocks 3 Attacks", "purchased": false, "texture": preload("res://assets/shield of fire-idle.png")}
 }
 
@@ -37,7 +37,7 @@ func _on_crystal_area_entered(_body: Node2D):
 	current_item = item_name
 	label_press_e.visible = true
 	animation_player.play("fade_in_out")
-	
+
 func _on_mighty_area_entered(_body: Node2D):
 	var item_name: String = "Mighty Wand"
 	current_item = item_name
@@ -80,7 +80,7 @@ func _on_purchase_pressed():
 		elif current_item.begins_with("Crystal"):
 			items["Crystal Wand"]["purchased"] = true
 		elif current_item.begins_with("Shield"):
-			items["Shield Of Fire"]["purchased"] = true			#make this false after each wave
+			items["Shield Of Fire"]["purchased"] = true
 
 		player.inventory["coins"] -= cost
 		player.update_coin_ui()
@@ -94,7 +94,7 @@ func _on_purchase_pressed():
 			shield = shield.instantiate()
 			self.get_parent().add_child(shield)
 			player.inventory["shield"] = 3
-			shield.position = player.global_position		# To-Do game logic
+			shield.position = player.global_position
 
 func disable_shop():
 	$".".visible = false

@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var speed: float = 300.0
-@export var damage: int = 30
+@export var damage: float = 30	#this value doesn't matter, check 'dmg' in player
 
 var direction: Vector2 = Vector2.ZERO
 var camera_limit: Vector2 = Vector2(960, 540) / 5
@@ -30,5 +30,6 @@ func _on_area_entered(area: Area2D) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Spider"):
 		if not body.is_dead:
-			body.damage(damage)
+			var rnd = randf_range(-3, 1)
+			body.damage(damage + rnd)
 			queue_free()

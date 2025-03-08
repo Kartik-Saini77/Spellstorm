@@ -1482,6 +1482,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAwAVABEAAAAAAP//AwAVABAAAAD//wAAAwAUABE
 tile_set = SubResource("TileSet_4cg7y")
 
 [node name="Shop" parent="." instance=ExtResource("11_ohako")]
+visible = false
 
 [node name="Player" parent="." instance=ExtResource("1_oexw6")]
 y_sort_enabled = true
@@ -1540,6 +1541,14 @@ theme_override_fonts/font = ExtResource("13_osan7")
 theme_override_font_sizes/font_size = 8
 text = ":9"
 icon = ExtResource("14_tblix")
+
+[node name="Timer" type="Timer" parent="Next Wave"]
+process_mode = 1
+one_shot = true
+
+[node name="Spawn_Timer" type="Timer" parent="."]
+process_mode = 1
+one_shot = true
 
 [connection signal="next_wave" from="Shop" to="." method="start_wave"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]

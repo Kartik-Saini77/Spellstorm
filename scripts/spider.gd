@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@export var health: int = 50
-@export var melee_damage: int = 20
+@export var health: float = 60
+@export var melee_damage: float = 20
 @export var speed: float = 50.0
 @export var attack_cooldown: float = 2.0
 @export var random_movement_interval: float = 1.5
@@ -27,8 +27,8 @@ var is_pushing: bool = false
 var target_position: Vector2 = Vector2.ZERO
 
 const DROP_ITEMS = [
-	{ "scene": preload("res://scenes/fireball_drop.tscn"), "chance": 0.3 },
 	{ "scene": preload("res://scenes/shield_of_fire.tscn"), "chance": 0.1 },
+	{ "scene": preload("res://scenes/fireball_drop.tscn"), "chance": 0.3 },
 	{ "scene": preload("res://scenes/coin.tscn"), "chance": 0.6 }
 ]
 
@@ -135,13 +135,14 @@ func perform_web_attack() -> void:
 	get_tree().current_scene.add_child(web_instance)
 	web_instance.set_direction(player.global_position)
 
-func damage(amount: int) -> void:
+func damage(amount: float) -> void:
 	if is_dead:
 		return
 
 	health -= amount
 	anim_player.play("damage")
-
+	
+	print(health)
 	if health <= 0:
 		die()
 
@@ -165,7 +166,7 @@ func die() -> void:
 	queue_free()
 
 func drop_loot() -> void:
-	var roll = randf_range(0.0, 2.0)
+	var roll = randf_range(0.0, 1.3)		#77% chance to drop an item
 	
 	var cumulative_chance = 0.0
 	for item in DROP_ITEMS:
