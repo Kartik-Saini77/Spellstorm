@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var speed = 100.0
 @export var health: float = 100.0
+@export var max_health: float = 100.0
 
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var screen_size: Vector2 = get_viewport_rect().size
@@ -148,6 +149,9 @@ func add_to_inventory(item: String) -> void:
 		update_coin_ui()
 	elif item == "shield":
 		inventory["shield"] = 3
+	elif item == "heart":
+		health = min(max_health, health+20)
+		stats.update_health()
 	else:
 		inventory[item] = true
 

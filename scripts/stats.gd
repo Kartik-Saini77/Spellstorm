@@ -6,7 +6,7 @@ extends Control
 @onready var coin_label: Label = $Coin_Count/Label
 @onready var score_label: Label = $Score
 @onready var high_score_label: Label = $HighScore
-@onready var max_health: float = player.health
+@onready var max_health: float = player.max_health
 
 var score: int = 0
 var high_score: int = 0

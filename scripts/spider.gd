@@ -28,8 +28,9 @@ var target_position: Vector2 = Vector2.ZERO
 
 const DROP_ITEMS = [
 	{ "scene": preload("res://scenes/shield_of_fire.tscn"), "chance": 0.1 },
-	{ "scene": preload("res://scenes/fireball_drop.tscn"), "chance": 0.3 },
-	{ "scene": preload("res://scenes/coin.tscn"), "chance": 0.6 }
+	{ "scene": preload("res://scenes/fireball_drop.tscn"), "chance": 0.2 },
+	{ "scene": preload("res://scenes/health_heart.tscn"), "chance": 0.2 },
+	{ "scene": preload("res://scenes/coin.tscn"), "chance": 0.5 }
 ]
 
 func _physics_process(_delta: float) -> void:
@@ -142,7 +143,6 @@ func damage(amount: float) -> void:
 	health -= amount
 	anim_player.play("damage")
 	
-	print(health)
 	if health <= 0:
 		die()
 
