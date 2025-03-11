@@ -8,16 +8,19 @@ extends Node2D
 
 @export var spawn_points: Array[Vector2] = [Vector2(-45, -95), Vector2(-25, -95), Vector2(45, -95), Vector2(-160, -55), Vector2(-160, 0), Vector2(-145, 90), Vector2(60, 95), Vector2(120, 95), Vector2(160, -40), Vector2(160, 45)]
 
-var wave = 1
+var wave = 0
 var spiders_remaining = 1
 
 func _ready():
 	start_wave()
+	pass
 
 func _process(_delta):
 	pass
 
 func start_wave() -> void:
+	wave += 1
+	stats.update_wave(wave)
 	$"Next Wave".visible = false
 	shop.disable_shop()
 	animation_player.play("fade_in")
@@ -55,11 +58,11 @@ func _on_spider_died() -> void:
 		wave_cleared()
 
 func wave_cleared() -> void:
+	stats.save_wave(wave)
 	animation_player.play("fade_out")
 	stats.update_score(500)
-	wave += 1
 	$"Shop".items["Shield Of Fire"]["purchased"] = false
-	if wave % 2 == 1:
+	if wave % 2 == 0:
 		shop.enable_shop()
 	else:
 		$"Next Wave".visible = true

@@ -345,6 +345,10 @@ _data = {
 
 [node name="Spider" type="CharacterBody2D" groups=["Spider"]]
 process_mode = 1
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
+collision_mask = 0
 script = ExtResource("1_d6m18")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

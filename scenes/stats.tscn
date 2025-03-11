@@ -55,13 +55,25 @@ text = "High Score:0000"
 z_index = 50
 layout_mode = 0
 offset_left = 262.0
-offset_top = 20.0
+offset_top = 23.0
 offset_right = 342.0
-offset_bottom = 27.0
+offset_bottom = 30.0
 scale = Vector2(0.6, 0.6)
 theme_override_fonts/font = ExtResource("2_3ghpe")
 theme_override_font_sizes/font_size = 8
 text = "Score:0000"
+
+[node name="Wave" type="Label" parent="."]
+z_index = 50
+layout_mode = 0
+offset_left = 12.2
+offset_top = 165.0
+offset_right = 92.2
+offset_bottom = 172.0
+scale = Vector2(0.6, 0.6)
+theme_override_fonts/font = ExtResource("2_3ghpe")
+theme_override_font_sizes/font_size = 8
+text = "Wave:00"
 
 [node name="Coin_Count" type="Node2D" parent="."]
 

@@ -118,7 +118,8 @@ func perform_melee_attack() -> void:
 		return
 
 	if global_position.distance_to(player.global_position) < 20:
-		player.damage(melee_damage)
+		var rnd = randf_range(-8, 2)
+		player.damage(melee_damage + rnd)
 	sprite.play("idle")
 	is_attacking = false
 	melee_timer.start(melee_cooldown)

@@ -364,6 +364,7 @@ _data = {
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 process_mode = 1
 z_index = 5
+y_sort_enabled = true
 script = ExtResource("1_vkwia")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]

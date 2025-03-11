@@ -20,7 +20,7 @@ var equipped_wand: String = "Wood"
 var equipped_shield: Node2D = null
 
 var inventory = {
-	"coins": 50,
+	"coins": 0,
 	"shield": 0,
 	"fireball": false,
 }

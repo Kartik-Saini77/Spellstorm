@@ -37,7 +37,8 @@ func _on_body_entered(body: Node2D):
 		queue_free()
 		body.queue_free()
 	
-	if body == player and player.damage(dmg):
+	var rnd = randf_range(-8, 2)
+	if body == player and player.damage(dmg + rnd):
 		if is_slowness:
 			player.apply_slow(slow_duration)
 		queue_free()

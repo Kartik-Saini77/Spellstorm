@@ -44,7 +44,9 @@ radius = 6.5
 
 [node name="Fireball" type="Node2D" groups=["Fireball"]]
 process_mode = 1
-z_index = 4
+z_index = -2
+z_as_relative = false
+y_sort_enabled = true
 script = ExtResource("1_un6kh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
