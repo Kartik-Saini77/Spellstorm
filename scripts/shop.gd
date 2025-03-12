@@ -29,7 +29,7 @@ func _process(_delta):
 	elif current_item and Input.is_action_just_pressed("E"):
 		open_popup()
 	
-	if popup.visible and items[current_item]["purchased"] and (not purchase_button.disabled):
+	if popup.visible and current_item and items[current_item]["purchased"] and (not purchase_button.disabled):
 		purchase_button.disabled = true
 
 func _on_crystal_area_entered(_body: Node2D):

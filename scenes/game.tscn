@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://u32k0y4fvv83"]
+[gd_scene load_steps=27 format=4 uid="uid://u32k0y4fvv83"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_gftxd"]
 [ext_resource type="PackedScene" uid="uid://b8kb1jk35rbdj" path="res://scenes/player.tscn" id="1_oexw6"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://v81mqcapod0o" path="res://scenes/shop.tscn" id="11_ohako"]
 [ext_resource type="PackedScene" uid="uid://cwpgs62agtk0v" path="res://scenes/you_died.tscn" id="12_fud3d"]
 [ext_resource type="FontFile" uid="uid://djw6p78gsyxsv" path="res://assets/fonts/dogica.ttf" id="13_osan7"]
-[ext_resource type="Texture2D" uid="uid://beabpiyglmbtg" path="res://assets/Controls.png" id="14_7syj5"]
 [ext_resource type="Texture2D" uid="uid://c1mn8qauus7j5" path="res://assets/next_wave.png" id="14_tblix"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gx4ap"]
@@ -1465,6 +1464,7 @@ libraries = {
 autoplay = "fade_in"
 
 [node name="Stats" parent="." instance=ExtResource("9_uvj3q")]
+z_index = 50
 offset_left = -160.0
 offset_top = -90.0
 offset_right = -160.0
@@ -1523,12 +1523,6 @@ z_index = 10
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(-93, -81, -71, -83, -69, -80, -69, -62, -67, -58, -61, -58, -59, -61, -59, -80, -57, -83, 9.23582, -83, 11, -81, 11, -74, 13, -71, 18, -71, 20, -74, 20, -81, 22, -83, 73.3053, -83, 75, -81, 75, -77, 77, -73, 83, -73, 85, -77, 85, -81, 87, -83, 156, -83, 156, 86, -155, 86, -155, -81, -119, -81, -117, -80, -116, -74, -115, -72, -110, -72, -108, -74, -107, -80, -105, -81, -94, -81, -94, -100, -163, -100, -163, 99, 162, 99, 162, -100, -93, -100)
-
-[node name="Controls_Sprite2D" type="Sprite2D" parent="."]
-visible = false
-z_index = 100
-scale = Vector2(0.954, 0.954)
-texture = ExtResource("14_7syj5")
 
 [connection signal="next_wave" from="Shop" to="." method="start_wave"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]

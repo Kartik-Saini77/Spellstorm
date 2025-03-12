@@ -13,7 +13,10 @@ config_version=5
 config/name="Spellstorm"
 run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/image="res://assets/Spellstorm-icons/Loading.png"
+boot_splash/fullsize=false
 config/icon="res://icon.svg"
+config/windows_native_icon="res://icon.ico"
 
 [display]
 

@@ -58,8 +58,6 @@ func _physics_process(_delta: float) -> void:
 		velocity = velocity.move_toward(Vector2.ZERO, speed)
 		play_animation("idle")
 
-	handle_wrap_around(self)
-
 func play_animation(animation_name: String) -> void:
 	if sprite.animation != animation_name:
 		sprite.play(animation_name)
@@ -72,21 +70,6 @@ func play_animation(animation_name: String) -> void:
 		_:
 			sprite.offset = Vector2.ZERO
 			sprite.speed_scale = 1.0
-
-func handle_wrap_around(entity: Node2D) -> void:
-	var adjusted_screen_size = screen_size / 3
-
-	# Horizontal wrap-around
-	if entity.position.x > adjusted_screen_size.x / 2:
-		entity.position.x = -adjusted_screen_size.x / 2
-	elif entity.position.x < -adjusted_screen_size.x / 2:
-		entity.position.x = adjusted_screen_size.x / 2
-
-	# Vertical wrap-around
-	if entity.position.y > adjusted_screen_size.y / 2:
-		entity.position.y = -adjusted_screen_size.y / 2
-	elif entity.position.y < -adjusted_screen_size.y / 2:
-		entity.position.y = adjusted_screen_size.y / 2
 
 func attack(fire_direction: Vector2) -> void:
 	if $Attack_Cooldown.is_stopped():

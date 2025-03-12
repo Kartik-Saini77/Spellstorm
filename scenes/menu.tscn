@@ -1372,7 +1372,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Label:position")
+tracks/2/path = NodePath("SpellStorm:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1391,7 +1391,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(125, 130)]
+"values": [Vector2(125, 110)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -1417,6 +1417,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector2(160, 90)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Control:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(125, 130)]
+}
 
 [sub_resource type="Animation" id="Animation_8ntb3"]
 resource_name = "move_down"
@@ -1424,7 +1436,7 @@ length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Label:position")
+tracks/0/path = NodePath("SpellStorm:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1443,7 +1455,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(125, -50), Vector2(125, 130)]
+"values": [Vector2(125, -70), Vector2(125, 110)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1457,6 +1469,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(125, -30), Vector2(125, 150)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(125, -50), Vector2(125, 130)]
+}
 
 [sub_resource type="Animation" id="Animation_0fb82"]
 resource_name = "move_up"
@@ -1464,7 +1488,7 @@ length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Label:position")
+tracks/0/path = NodePath("SpellStorm:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1483,7 +1507,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(125, 130), Vector2(125, -50)]
+"values": [Vector2(125, 110), Vector2(125, -71)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1496,6 +1520,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(125, 150), Vector2(125, -30)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(125, 130), Vector2(125, -50)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2bmmm"]
@@ -1558,7 +1594,8 @@ use_parent_material = true
 tile_map_data = PackedByteArray("AAD2//v/AQAVAAIAAAD2//z/AQAVAAMAAAD2//3/AQAVAAQAAAD2//7/AQAVAAUAAAD2////AQAVAAYAAAD2/wAAAQAVAAcAAAD2/wEAAQAVAAgAAAD3//v/AQAWAAIAAAD3//z/AQAWAAMAAAD3//3/AQAWAAQAAAD3//7/AQAWAAUAAAD3////AQAWAAYAAAD3/wAAAQAWAAcAAAD4//3/AQAXAAQAAAD4//7/AQAXAAUAAAD4////AQAXAAYAAAD2/wIAAQAVAAkAAAADAAQAAQAUAAEAAAACAAUAAQATAAIAAAADAAUAAQAUAAIAAAAEAAUAAQAVAAIAAAAFAAUAAQAWAAIAAAAAAAUAAQAOAAEAAAD//wUAAQANAAEAAAD+/wUAAQAMAAEAAAD9/wUAAQALAAEAAAD8/wUAAQAHAAIAAAD7/wUAAQAGAAIAAAD6/wUAAQAFAAIAAAD5/wUAAQAEAAIAAAD4/wUAAQADAAIAAAD3/wUAAQACAAIAAAD4/wQAAQADAAEAAAD5/wQAAQAEAAEAAAD5/wMAAQAEAAAAAAD6/wMAAQAFAAAAAAD6/wQAAQAFAAEAAAD7/wQAAQAGAAEAAAAJAP//AQAKAAIAAAAJAAAAAQAKAAMAAAAJAAEAAQAKAAQAAAAJAAIAAQAKAAUAAAAJAAMAAQAKAAYAAAA=")
 tile_set = SubResource("TileSet_0lrtc")
 
-[node name="Label" type="Label" parent="."]
+[node name="SpellStorm" type="Label" parent="."]
+z_index = 5
 layout_mode = 0
 offset_left = 80.0
 offset_top = 33.0
@@ -1569,12 +1606,12 @@ theme_override_font_sizes/font_size = 16
 text = "SPELLSTORM"
 
 [node name="Play" type="Control" parent="."]
-z_index = 6
+z_index = 15
 anchors_preset = 0
 offset_left = 125.0
-offset_top = 130.0
+offset_top = 110.0
 offset_right = 195.0
-offset_bottom = 146.0
+offset_bottom = 126.0
 theme = SubResource("Theme_6ntqa")
 
 [node name="Button" type="Button" parent="Play"]
@@ -1591,8 +1628,31 @@ theme_override_font_sizes/font_size = 8
 text = "Play"
 icon_alignment = 1
 
+[node name="Control" type="Control" parent="."]
+z_index = 15
+anchors_preset = 0
+offset_left = 125.0
+offset_top = 130.0
+offset_right = 195.0
+offset_bottom = 146.0
+theme = SubResource("Theme_6ntqa")
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_right = 70.0
+offset_bottom = 16.0
+focus_mode = 0
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_disabled_color = Color(0.899258, 0.899258, 0.899258, 1)
+theme_override_fonts/font = ExtResource("1_ukqvb")
+theme_override_font_sizes/font_size = 8
+text = "Controls"
+icon_alignment = 1
+
 [node name="Exit" type="Control" parent="."]
-z_index = 6
+z_index = 15
 anchors_preset = 0
 offset_left = 125.0
 offset_top = 150.0
@@ -1655,9 +1715,10 @@ text = "High Score:0000"
 [node name="Controls_Sprite2D" type="Sprite2D" parent="."]
 visible = false
 z_index = 100
-position = Vector2(160, 90)
+position = Vector2(160, 99)
 scale = Vector2(0.954248, 0.954248)
 texture = ExtResource("8_2o5bq")
 
 [connection signal="pressed" from="Play/Button" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Control/Button" to="." method="_on_controls_pressed"]
 [connection signal="pressed" from="Exit/Button" to="." method="_on_exit_pressed"]
