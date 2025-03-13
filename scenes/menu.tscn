@@ -1632,9 +1632,9 @@ icon_alignment = 1
 z_index = 15
 anchors_preset = 0
 offset_left = 125.0
-offset_top = 130.0
+offset_top = 129.0
 offset_right = 195.0
-offset_bottom = 146.0
+offset_bottom = 145.0
 theme = SubResource("Theme_6ntqa")
 
 [node name="Button" type="Button" parent="Control"]

@@ -294,6 +294,8 @@ theme_override_fonts/font = ExtResource("5_bv2s7")
 text = "20 Buy "
 icon = ExtResource("8_1t8by")
 
+[connection signal="android_back" from="." to="." method="_on_android_back"]
+[connection signal="android_touch" from="." to="." method="_on_android_touch"]
 [connection signal="body_entered" from="Crystal Wand" to="." method="_on_crystal_area_entered"]
 [connection signal="body_exited" from="Crystal Wand" to="." method="_on_item_area_exited"]
 [connection signal="body_entered" from="Mighty Wand" to="." method="_on_mighty_area_entered"]

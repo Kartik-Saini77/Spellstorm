@@ -19,6 +19,9 @@ signal any_button_pressed
 const SAVE_PATH: String = "user://high_score.save"
 
 func _ready():
+	if OS.get_name() == "Android":
+		$Play.position = Vector2(125, 130)
+		$Control.visible = false
 	controls.visible = false
 	if FileAccess.file_exists(SAVE_PATH):
 		var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
@@ -33,7 +36,7 @@ func _ready():
 		wave_label.text = ""
 
 func _on_play_pressed():
-	if high_score == 0:
+	if high_score == 0 and OS.get_name() != "Android":
 		controls.visible = true
 		await any_button_pressed
 		controls.visible = false
@@ -55,9 +58,9 @@ func _on_controls_pressed() -> void:
 		await get_tree().create_timer(0.1).timeout
 		enable_buttons()
 
-func _input(event):
-	if event.is_pressed():
-		any_button_pressed.emit()
+func _notification(what):
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		get_tree().quit()
 
 func disable_buttons():
 	play_button.disabled = true

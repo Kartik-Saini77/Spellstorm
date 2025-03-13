@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://cghtef1w7uudm"]
+
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="1_wgbrc"]
+
+[node name="Right_Joystick" type="CanvasLayer"]
+
+[node name="Virtual Joystick" parent="." instance=ExtResource("1_wgbrc")]
+modulate = Color(1, 1, 1, 0.705882)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -240.0
+offset_top = -260.0
+offset_right = 60.0
+offset_bottom = 40.0
+grow_horizontal = 0
+scale = Vector2(0.8, 0.8)
+joystick_mode = 1
+visibility_mode = 1
+action_left = "fire_left"
+action_right = "fire_right"
+action_up = "fire_up"
+action_down = "fire_down"
+metadata/_edit_use_anchors_ = true

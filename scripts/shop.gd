@@ -9,6 +9,8 @@ extends Node2D
 @onready var purchase_button = $Popup/Control/Button
 
 signal next_wave
+signal android_back
+signal android_touch
 
 var items = {
 	"Crystal Wand": {"cost": 10, "description": "+10 Damage", "purchased": false, "texture": preload("res://assets/Little Mage1-1/_Staffs/staff_crystal.png")},
@@ -19,11 +21,13 @@ var items = {
 var current_item = null
 
 func _ready():
+	if OS.get_name() == "Android":
+		$"Next Wave".position += Vector2(-30, 0)
 	label_press_e.visible = false
 	popup.visible = false
 
 func _process(_delta):
-	if popup.visible and Input.is_action_just_pressed("E") or Input.is_action_just_pressed("Esc"):
+	if popup.visible and (Input.is_action_just_pressed("E") or Input.is_action_just_pressed("Esc")):
 		popup.visible = false
 		$"Next Wave/Button".disabled = false
 	elif current_item and Input.is_action_just_pressed("E"):
@@ -32,23 +36,38 @@ func _process(_delta):
 	if popup.visible and current_item and items[current_item]["purchased"] and (not purchase_button.disabled):
 		purchase_button.disabled = true
 
+func _on_android_touch():
+	if popup.visible:
+		popup.visible = false
+		$"Next Wave/Button".disabled = false
+	elif current_item:
+		open_popup()
+
+func _on_android_back():
+	if popup.visible:
+		popup.visible = false
+		$"Next Wave/Button".disabled = false
+
 func _on_crystal_area_entered(_body: Node2D):
-	var item_name: String = "Crystal Wand" 
+	var item_name: String = "Crystal Wand"
 	current_item = item_name
-	label_press_e.visible = true
-	animation_player.play("fade_in_out")
+	if OS.get_name() != "Android":
+		label_press_e.visible = true
+		animation_player.play("fade_in_out")
 
 func _on_mighty_area_entered(_body: Node2D):
 	var item_name: String = "Mighty Wand"
 	current_item = item_name
-	label_press_e.visible = true
-	animation_player.play("fade_in_out")
+	if OS.get_name() != "Android":
+		label_press_e.visible = true
+		animation_player.play("fade_in_out")
 
 func _on_shield_area_entered(_body: Node2D):
-	var item_name: String = "Shield Of Fire" 
+	var item_name: String = "Shield Of Fire"
 	current_item = item_name
-	label_press_e.visible = true
-	animation_player.play("fade_in_out")
+	if OS.get_name() != "Android":
+		label_press_e.visible = true
+		animation_player.play("fade_in_out")
 
 func _on_item_area_exited(_body: Node2D):
 	current_item = null
@@ -69,7 +88,6 @@ func open_popup():
 		purchase_button.disabled = true
 
 	player.play_animation("idle")
-
 
 func _on_purchase_pressed():
 	var cost = items[current_item]["cost"]
@@ -121,3 +139,13 @@ func enable_shop():
 
 func _on_next_wave_pressed() -> void:
 	next_wave.emit()
+
+func _input(event):
+	if OS.get_name() == "Android":
+		if event is InputEventScreenTouch and event.pressed:
+			if current_item and not purchase_button.get_global_rect().has_point(event.position) and not $"Next Wave/Button".get_global_rect().has_point(event.position):
+				android_touch.emit()
+
+func _notification(what):
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		android_back.emit()

@@ -23,3 +23,7 @@ func toggle_pause() -> void:
 	game_paused = !game_paused
 	get_tree().paused = game_paused
 	$".".visible = game_paused
+
+func _notification(what):
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		toggle_pause()

@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://1r26uhbgy14t"]
+
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="1_yle26"]
+
+[node name="Left_Joystick" type="CanvasLayer"]
+
+[node name="Virtual Joystick" parent="." instance=ExtResource("1_yle26")]
+modulate = Color(1, 1, 1, 0.705882)
+offset_top = -260.0
+offset_bottom = 40.0
+scale = Vector2(0.8, 0.8)
+joystick_mode = 1
+visibility_mode = 1
+action_left = "left"
+action_right = "right"
+action_up = "up"
+action_down = "down"
+metadata/_edit_use_anchors_ = true

@@ -12,6 +12,11 @@ var wave = 0
 var spiders_remaining = 1
 
 func _ready():
+	if OS.get_name() == "Android":
+		$"Next Wave".position += Vector2(-30, 0)
+	else:
+		$Android_Controls/Left_Joystick.visible = false
+		$Android_Controls/Right_Joystick.visible = false
 	start_wave()
 	pass
 
@@ -65,12 +70,14 @@ func wave_cleared() -> void:
 	if wave % 2 == 0:
 		shop.enable_shop()
 	else:
-		$"Next Wave".visible = true
-		for i in range(9, -1, -1):
-			$"Next Wave/Button".text = ":" + str(i)
-			$"Next Wave/Timer".start()
-			await $"Next Wave/Timer".timeout
-		if $"Next Wave".visible:
+		if not $"Next Wave".visible:
+			$"Next Wave".visible = true
+			for i in range(9, -1, -1):
+				if not $"Next Wave".visible:
+					return
+				$"Next Wave/Button".text = ":" + str(i)
+				$"Next Wave/Timer".start()
+				await $"Next Wave/Timer".timeout
 			$"Next Wave".visible = false
 			start_wave()
 
