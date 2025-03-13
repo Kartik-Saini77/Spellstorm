@@ -11,8 +11,9 @@ SpellStorm is a fast-paced 2D action-survival game built in Godot, where you pla
 
 ## Installation
 
-1. Download the latest Windows release from the [Releases](https://github.com/Kartik-Saini77/Spellstorm/releases) page.
-2. Run `SpellStorm.exe` to start the game.
+1. Download the latest Windows or Android release from the [Releases](https://github.com/Kartik-Saini77/Spellstorm/releases) page.
+2. For Windows: Run `SpellStorm.exe` to start the game.
+   For Android: Install `SpellStorm.apk` and run the game.
 
 ## Roadmap
 
