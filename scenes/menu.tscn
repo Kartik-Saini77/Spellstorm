@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://b3l5gcjyrfie5"]
+[gd_scene load_steps=27 format=4 uid="uid://b3l5gcjyrfie5"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_n131b"]
 [ext_resource type="FontFile" uid="uid://djw6p78gsyxsv" path="res://assets/fonts/dogica.ttf" id="1_ukqvb"]
@@ -1541,6 +1541,51 @@ _data = {
 "move_up": SubResource("Animation_0fb82")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o63n0"]
+bg_color = Color(0.85098, 0.85098, 0.85098, 1)
+border_width_bottom = 2
+border_color = Color(0.627451, 0.627451, 0.627451, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 4
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v27xh"]
+bg_color = Color(0.745581, 0.74558, 0.74558, 1)
+border_width_bottom = 2
+border_color = Color(0.497474, 0.497474, 0.497474, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 4
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t6x7q"]
+bg_color = Color(0.85098, 0.85098, 0.85098, 1)
+border_width_bottom = 2
+border_color = Color(0.627451, 0.627451, 0.627451, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 4
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_bctq5"]
+Button/styles/disabled = SubResource("StyleBoxFlat_o63n0")
+Button/styles/hover = SubResource("StyleBoxFlat_v27xh")
+Button/styles/normal = SubResource("StyleBoxFlat_t6x7q")
+Button/styles/pressed = SubResource("StyleBoxFlat_t6x7q")
+
 [node name="Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -1632,9 +1677,9 @@ icon_alignment = 1
 z_index = 15
 anchors_preset = 0
 offset_left = 125.0
-offset_top = 129.0
+offset_top = 130.0
 offset_right = 195.0
-offset_bottom = 145.0
+offset_bottom = 146.0
 theme = SubResource("Theme_6ntqa")
 
 [node name="Button" type="Button" parent="Control"]
@@ -1719,6 +1764,27 @@ position = Vector2(160, 99)
 scale = Vector2(0.954248, 0.954248)
 texture = ExtResource("8_2o5bq")
 
+[node name="X_Button" type="Button" parent="Controls_Sprite2D"]
+offset_left = -155.0
+offset_top = -92.0
+offset_right = -135.0
+offset_bottom = -72.0
+focus_mode = 0
+theme = SubResource("Theme_bctq5")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_ukqvb")
+theme_override_font_sizes/font_size = 8
+text = "X"
+icon_alignment = 1
+
 [connection signal="pressed" from="Play/Button" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Control/Button" to="." method="_on_controls_pressed"]
 [connection signal="pressed" from="Exit/Button" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Controls_Sprite2D/X_Button" to="." method="_on_x_button_pressed"]

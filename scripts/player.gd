@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 @export var speed = 100.0
-@export var health: float = 100.0
 @export var max_health: float = 100.0
+@export var health: float = max_health
 
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var screen_size: Vector2 = get_viewport_rect().size

@@ -1,10 +1,11 @@
 extends Control
 
-#To make any changes in the menu scene, also make the same changes in the animatioln player
+#To make any changes in the menu scene, also make the same changes in the animation player
 
 @onready var play_button: Button = $Play/Button
 @onready var controls_button: Button = $Control/Button
 @onready var exit_button: Button = $Exit/Button
+@onready var x_button: Button = $Controls_Sprite2D/X_Button
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var controls: Sprite2D = $Controls_Sprite2D
 @onready var high_score_label: Label = $"Stats/HighScore"
@@ -57,6 +58,9 @@ func _on_controls_pressed() -> void:
 		controls.visible = false
 		await get_tree().create_timer(0.1).timeout
 		enable_buttons()
+
+func _on_x_button_pressed() -> void:
+	emit_signal("any_button_pressed")
 
 func _notification(what):
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
